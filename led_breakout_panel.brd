@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="12.5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -60,46 +60,54 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0.635" x2="8.255" y2="0.635" width="0" layer="20"/>
-<wire x1="8.255" y1="0.635" x2="8.255" y2="10.16" width="0" layer="20"/>
-<wire x1="8.255" y1="10.16" x2="0" y2="10.16" width="0" layer="20"/>
-<wire x1="0" y1="10.16" x2="0" y2="0.635" width="0" layer="20"/>
-<wire x1="0" y1="12.065" x2="8.255" y2="12.065" width="0" layer="20"/>
-<wire x1="8.255" y1="12.065" x2="8.255" y2="21.59" width="0" layer="20"/>
-<wire x1="8.255" y1="21.59" x2="0" y2="21.59" width="0" layer="20"/>
-<wire x1="0" y1="21.59" x2="0" y2="12.065" width="0" layer="20"/>
-<wire x1="10.16" y1="12.065" x2="18.415" y2="12.065" width="0" layer="20"/>
-<wire x1="18.415" y1="12.065" x2="18.415" y2="21.59" width="0" layer="20"/>
-<wire x1="18.415" y1="21.59" x2="10.16" y2="21.59" width="0" layer="20"/>
-<wire x1="10.16" y1="21.59" x2="10.16" y2="12.065" width="0" layer="20"/>
-<wire x1="10.16" y1="0.635" x2="18.415" y2="0.635" width="0" layer="20"/>
-<wire x1="18.415" y1="0.635" x2="18.415" y2="10.16" width="0" layer="20"/>
-<wire x1="18.415" y1="10.16" x2="10.16" y2="10.16" width="0" layer="20"/>
-<wire x1="10.16" y1="10.16" x2="10.16" y2="0.635" width="0" layer="20"/>
-<wire x1="20.32" y1="12.065" x2="28.575" y2="12.065" width="0" layer="20"/>
-<wire x1="28.575" y1="12.065" x2="28.575" y2="21.59" width="0" layer="20"/>
-<wire x1="28.575" y1="21.59" x2="20.32" y2="21.59" width="0" layer="20"/>
-<wire x1="20.32" y1="21.59" x2="20.32" y2="12.065" width="0" layer="20"/>
-<wire x1="20.32" y1="0.635" x2="28.575" y2="0.635" width="0" layer="20"/>
-<wire x1="28.575" y1="0.635" x2="28.575" y2="10.16" width="0" layer="20"/>
-<wire x1="28.575" y1="10.16" x2="20.32" y2="10.16" width="0" layer="20"/>
-<wire x1="20.32" y1="10.16" x2="20.32" y2="0.635" width="0" layer="20"/>
-<wire x1="30.48" y1="12.065" x2="38.735" y2="12.065" width="0" layer="20"/>
-<wire x1="38.735" y1="12.065" x2="38.735" y2="21.59" width="0" layer="20"/>
-<wire x1="38.735" y1="21.59" x2="30.48" y2="21.59" width="0" layer="20"/>
-<wire x1="30.48" y1="21.59" x2="30.48" y2="12.065" width="0" layer="20"/>
-<wire x1="30.48" y1="0.635" x2="38.735" y2="0.635" width="0" layer="20"/>
-<wire x1="38.735" y1="0.635" x2="38.735" y2="10.16" width="0" layer="20"/>
-<wire x1="38.735" y1="10.16" x2="30.48" y2="10.16" width="0" layer="20"/>
-<wire x1="30.48" y1="10.16" x2="30.48" y2="0.635" width="0" layer="20"/>
-<wire x1="40.64" y1="12.065" x2="48.895" y2="12.065" width="0" layer="20"/>
-<wire x1="48.895" y1="12.065" x2="48.895" y2="21.59" width="0" layer="20"/>
-<wire x1="48.895" y1="21.59" x2="40.64" y2="21.59" width="0" layer="20"/>
-<wire x1="40.64" y1="21.59" x2="40.64" y2="12.065" width="0" layer="20"/>
-<wire x1="40.64" y1="0.635" x2="48.895" y2="0.635" width="0" layer="20"/>
-<wire x1="48.895" y1="0.635" x2="48.895" y2="10.16" width="0" layer="20"/>
-<wire x1="48.895" y1="10.16" x2="40.64" y2="10.16" width="0" layer="20"/>
-<wire x1="40.64" y1="10.16" x2="40.64" y2="0.635" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="7.62" y2="0" width="0" layer="20"/>
+<wire x1="7.62" y1="0" x2="7.62" y2="7.62" width="0" layer="20"/>
+<wire x1="7.62" y1="7.62" x2="0" y2="7.62" width="0" layer="20"/>
+<wire x1="0" y1="7.62" x2="0" y2="0" width="0" layer="20"/>
+<wire x1="0" y1="7.9375" x2="7.62" y2="7.9375" width="0" layer="20"/>
+<wire x1="7.62" y1="7.9375" x2="7.62" y2="15.5575" width="0" layer="20"/>
+<wire x1="7.62" y1="15.5575" x2="0" y2="15.5575" width="0" layer="20"/>
+<wire x1="0" y1="15.5575" x2="0" y2="7.9375" width="0" layer="20"/>
+<wire x1="7.9375" y1="0" x2="15.5575" y2="0" width="0" layer="20"/>
+<wire x1="15.5575" y1="0" x2="15.5575" y2="7.62" width="0" layer="20"/>
+<wire x1="15.5575" y1="7.62" x2="7.9375" y2="7.62" width="0" layer="20"/>
+<wire x1="7.9375" y1="7.62" x2="7.9375" y2="0" width="0" layer="20"/>
+<wire x1="7.9375" y1="7.9375" x2="15.5575" y2="7.9375" width="0" layer="20"/>
+<wire x1="15.5575" y1="7.9375" x2="15.5575" y2="15.5575" width="0" layer="20"/>
+<wire x1="15.5575" y1="15.5575" x2="7.9375" y2="15.5575" width="0" layer="20"/>
+<wire x1="7.9375" y1="15.5575" x2="7.9375" y2="7.9375" width="0" layer="20"/>
+<wire x1="15.875" y1="0" x2="23.495" y2="0" width="0" layer="20"/>
+<wire x1="23.495" y1="0" x2="23.495" y2="7.62" width="0" layer="20"/>
+<wire x1="23.495" y1="7.62" x2="15.875" y2="7.62" width="0" layer="20"/>
+<wire x1="15.875" y1="7.62" x2="15.875" y2="0" width="0" layer="20"/>
+<wire x1="15.875" y1="7.9375" x2="23.495" y2="7.9375" width="0" layer="20"/>
+<wire x1="23.495" y1="7.9375" x2="23.495" y2="15.5575" width="0" layer="20"/>
+<wire x1="23.495" y1="15.5575" x2="15.875" y2="15.5575" width="0" layer="20"/>
+<wire x1="15.875" y1="15.5575" x2="15.875" y2="7.9375" width="0" layer="20"/>
+<wire x1="23.8125" y1="0" x2="31.4325" y2="0" width="0" layer="20"/>
+<wire x1="31.4325" y1="0" x2="31.4325" y2="7.62" width="0" layer="20"/>
+<wire x1="31.4325" y1="7.62" x2="23.8125" y2="7.62" width="0" layer="20"/>
+<wire x1="23.8125" y1="7.62" x2="23.8125" y2="0" width="0" layer="20"/>
+<wire x1="23.8125" y1="7.9375" x2="31.4325" y2="7.9375" width="0" layer="20"/>
+<wire x1="31.4325" y1="7.9375" x2="31.4325" y2="15.5575" width="0" layer="20"/>
+<wire x1="31.4325" y1="15.5575" x2="23.8125" y2="15.5575" width="0" layer="20"/>
+<wire x1="23.8125" y1="15.5575" x2="23.8125" y2="7.9375" width="0" layer="20"/>
+<wire x1="31.75" y1="0" x2="39.37" y2="0" width="0" layer="20"/>
+<wire x1="39.37" y1="0" x2="39.37" y2="7.62" width="0" layer="20"/>
+<wire x1="39.37" y1="7.62" x2="31.75" y2="7.62" width="0" layer="20"/>
+<wire x1="31.75" y1="7.62" x2="31.75" y2="0" width="0" layer="20"/>
+<wire x1="31.75" y1="7.9375" x2="39.37" y2="7.9375" width="0" layer="20"/>
+<wire x1="39.37" y1="7.9375" x2="39.37" y2="15.5575" width="0" layer="20"/>
+<wire x1="39.37" y1="15.5575" x2="31.75" y2="15.5575" width="0" layer="20"/>
+<wire x1="31.75" y1="15.5575" x2="31.75" y2="7.9375" width="0" layer="20"/>
+<wire x1="39.6875" y1="0" x2="47.3075" y2="0" width="0" layer="20"/>
+<wire x1="47.3075" y1="0" x2="47.3075" y2="7.62" width="0" layer="20"/>
+<wire x1="47.3075" y1="7.62" x2="39.6875" y2="7.62" width="0" layer="20"/>
+<wire x1="39.6875" y1="7.62" x2="39.6875" y2="0" width="0" layer="20"/>
+<wire x1="39.6875" y1="7.9375" x2="47.3075" y2="7.9375" width="0" layer="20"/>
+<wire x1="47.3075" y1="7.9375" x2="47.3075" y2="15.5575" width="0" layer="20"/>
+<wire x1="47.3075" y1="15.5575" x2="39.6875" y2="15.5575" width="0" layer="20"/>
+<wire x1="39.6875" y1="15.5575" x2="39.6875" y2="7.9375" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="rcl">
@@ -1413,125 +1421,149 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="R1" library="rcl" package="R0603" value="220" x="2.54" y="4.445" smashed="yes" rot="R270"/>
-<element name="LED1" library="led" package="SML0603" value="" x="5.08" y="4.445" smashed="yes" rot="R270">
-<attribute name="VALUE" x="3.08" y="5.445" size="1.27" layer="27" rot="R270"/>
+<element name="R1" library="rcl" package="R0603" value="220" x="2.54" y="3.175" smashed="yes" rot="R270"/>
+<element name="LED1" library="led" package="SML0603" value="" x="5.08" y="3.175" smashed="yes" rot="R270">
+<attribute name="VALUE" x="3.08" y="4.175" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V" library="testpad" package="TP13R" value="TPTP13R" x="2.54" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="2.54" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="2.032" y="7.62" size="0.0254" layer="27"/>
+<element name="5V" library="testpad" package="TP13R" value="TPTP13R" x="2.54" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="2.54" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="2.032" y="5.715" size="0.0254" layer="27"/>
 </element>
-<element name="GND" library="testpad" package="TP13SQ" value="TPTP13SQ" x="5.08" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="5.08" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="4.445" y="7.493" size="0.0254" layer="27"/>
+<element name="GND" library="testpad" package="TP13SQ" value="TPTP13SQ" x="5.08" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="5.08" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="4.445" y="5.588" size="0.0254" layer="27"/>
 </element>
-<element name="R2" library="rcl" package="R0603" value="220" x="2.54" y="15.875" smashed="yes" rot="R270"/>
-<element name="LED2" library="led" package="SML0603" value="" x="5.08" y="15.875" smashed="yes" rot="R270">
-<attribute name="VALUE" x="3.08" y="16.875" size="1.27" layer="27" rot="R270"/>
+<element name="R2" library="rcl" package="R0603" value="220" x="2.54" y="11.1125" smashed="yes" rot="R270"/>
+<element name="LED2" library="led" package="SML0603" value="" x="5.08" y="11.1125" smashed="yes" rot="R270">
+<attribute name="VALUE" x="3.08" y="12.1125" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V1" library="testpad" package="TP13R" value="TPTP13R" x="2.54" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="2.54" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="2.032" y="19.05" size="0.0254" layer="27"/>
+<element name="5V1" library="testpad" package="TP13R" value="TPTP13R" x="2.54" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="2.54" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="2.032" y="13.6525" size="0.0254" layer="27"/>
 </element>
-<element name="GND1" library="testpad" package="TP13SQ" value="TPTP13SQ" x="5.08" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="5.08" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="4.445" y="18.923" size="0.0254" layer="27"/>
+<element name="GND1" library="testpad" package="TP13SQ" value="TPTP13SQ" x="5.08" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="5.08" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="4.445" y="13.5255" size="0.0254" layer="27"/>
 </element>
-<element name="R3" library="rcl" package="R0603" value="220" x="12.7" y="15.875" smashed="yes" rot="R270"/>
-<element name="LED3" library="led" package="SML0603" value="" x="15.24" y="15.875" smashed="yes" rot="R270">
-<attribute name="VALUE" x="13.24" y="16.875" size="1.27" layer="27" rot="R270"/>
+<element name="R3" library="rcl" package="R0603" value="220" x="10.4775" y="3.175" smashed="yes" rot="R270"/>
+<element name="LED3" library="led" package="SML0603" value="" x="13.0175" y="3.175" smashed="yes" rot="R270">
+<attribute name="VALUE" x="11.0175" y="4.175" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V2" library="testpad" package="TP13R" value="TPTP13R" x="12.7" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="12.7" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="12.192" y="19.05" size="0.0254" layer="27"/>
+<element name="5V2" library="testpad" package="TP13R" value="TPTP13R" x="10.4775" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="10.4775" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="9.9695" y="5.715" size="0.0254" layer="27"/>
 </element>
-<element name="GND2" library="testpad" package="TP13SQ" value="TPTP13SQ" x="15.24" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="15.24" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="14.605" y="18.923" size="0.0254" layer="27"/>
+<element name="GND2" library="testpad" package="TP13SQ" value="TPTP13SQ" x="13.0175" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="13.0175" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="12.3825" y="5.588" size="0.0254" layer="27"/>
 </element>
-<element name="R4" library="rcl" package="R0603" value="220" x="12.7" y="4.445" smashed="yes" rot="R270"/>
-<element name="LED4" library="led" package="SML0603" value="" x="15.24" y="4.445" smashed="yes" rot="R270">
-<attribute name="VALUE" x="13.24" y="5.445" size="1.27" layer="27" rot="R270"/>
+<element name="R4" library="rcl" package="R0603" value="220" x="10.4775" y="11.1125" smashed="yes" rot="R270"/>
+<element name="LED4" library="led" package="SML0603" value="" x="13.0175" y="11.1125" smashed="yes" rot="R270">
+<attribute name="VALUE" x="11.0175" y="12.1125" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V3" library="testpad" package="TP13R" value="TPTP13R" x="12.7" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="12.7" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="12.192" y="7.62" size="0.0254" layer="27"/>
+<element name="5V3" library="testpad" package="TP13R" value="TPTP13R" x="10.4775" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="10.4775" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="9.9695" y="13.6525" size="0.0254" layer="27"/>
 </element>
-<element name="GND3" library="testpad" package="TP13SQ" value="TPTP13SQ" x="15.24" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="15.24" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="14.605" y="7.493" size="0.0254" layer="27"/>
+<element name="GND3" library="testpad" package="TP13SQ" value="TPTP13SQ" x="13.0175" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="13.0175" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="12.3825" y="13.5255" size="0.0254" layer="27"/>
 </element>
-<element name="R5" library="rcl" package="R0603" value="220" x="22.86" y="15.875" smashed="yes" rot="R270"/>
-<element name="LED5" library="led" package="SML0603" value="" x="25.4" y="15.875" smashed="yes" rot="R270">
-<attribute name="VALUE" x="23.4" y="16.875" size="1.27" layer="27" rot="R270"/>
+<element name="R5" library="rcl" package="R0603" value="220" x="18.415" y="3.175" smashed="yes" rot="R270"/>
+<element name="LED5" library="led" package="SML0603" value="" x="20.955" y="3.175" smashed="yes" rot="R270">
+<attribute name="VALUE" x="18.955" y="4.175" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V4" library="testpad" package="TP13R" value="TPTP13R" x="22.86" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="22.86" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="22.352" y="19.05" size="0.0254" layer="27"/>
+<element name="5V4" library="testpad" package="TP13R" value="TPTP13R" x="18.415" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="18.415" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="17.907" y="5.715" size="0.0254" layer="27"/>
 </element>
-<element name="GND4" library="testpad" package="TP13SQ" value="TPTP13SQ" x="25.4" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="25.4" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="24.765" y="18.923" size="0.0254" layer="27"/>
+<element name="GND4" library="testpad" package="TP13SQ" value="TPTP13SQ" x="20.955" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="20.955" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="20.32" y="5.588" size="0.0254" layer="27"/>
 </element>
-<element name="R6" library="rcl" package="R0603" value="220" x="22.86" y="4.445" smashed="yes" rot="R270"/>
-<element name="LED6" library="led" package="SML0603" value="" x="25.4" y="4.445" smashed="yes" rot="R270">
-<attribute name="VALUE" x="23.4" y="5.445" size="1.27" layer="27" rot="R270"/>
+<element name="R6" library="rcl" package="R0603" value="220" x="18.415" y="11.1125" smashed="yes" rot="R270"/>
+<element name="LED6" library="led" package="SML0603" value="" x="20.955" y="11.1125" smashed="yes" rot="R270">
+<attribute name="VALUE" x="18.955" y="12.1125" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V5" library="testpad" package="TP13R" value="TPTP13R" x="22.86" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="22.86" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="22.352" y="7.62" size="0.0254" layer="27"/>
+<element name="5V5" library="testpad" package="TP13R" value="TPTP13R" x="18.415" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="18.415" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="17.907" y="13.6525" size="0.0254" layer="27"/>
 </element>
-<element name="GND5" library="testpad" package="TP13SQ" value="TPTP13SQ" x="25.4" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="25.4" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="24.765" y="7.493" size="0.0254" layer="27"/>
+<element name="GND5" library="testpad" package="TP13SQ" value="TPTP13SQ" x="20.955" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="20.955" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="20.32" y="13.5255" size="0.0254" layer="27"/>
 </element>
-<element name="R7" library="rcl" package="R0603" value="220" x="33.02" y="15.875" smashed="yes" rot="R270"/>
-<element name="LED7" library="led" package="SML0603" value="" x="35.56" y="15.875" smashed="yes" rot="R270">
-<attribute name="VALUE" x="33.56" y="16.875" size="1.27" layer="27" rot="R270"/>
+<element name="R7" library="rcl" package="R0603" value="220" x="26.3525" y="3.175" smashed="yes" rot="R270"/>
+<element name="LED7" library="led" package="SML0603" value="" x="28.8925" y="3.175" smashed="yes" rot="R270">
+<attribute name="VALUE" x="26.8925" y="4.175" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V6" library="testpad" package="TP13R" value="TPTP13R" x="33.02" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="33.02" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="32.512" y="19.05" size="0.0254" layer="27"/>
+<element name="5V6" library="testpad" package="TP13R" value="TPTP13R" x="26.3525" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="26.3525" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="25.8445" y="5.715" size="0.0254" layer="27"/>
 </element>
-<element name="GND6" library="testpad" package="TP13SQ" value="TPTP13SQ" x="35.56" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="35.56" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="34.925" y="18.923" size="0.0254" layer="27"/>
+<element name="GND6" library="testpad" package="TP13SQ" value="TPTP13SQ" x="28.8925" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="28.8925" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="28.2575" y="5.588" size="0.0254" layer="27"/>
 </element>
-<element name="R8" library="rcl" package="R0603" value="220" x="33.02" y="4.445" smashed="yes" rot="R270"/>
-<element name="LED8" library="led" package="SML0603" value="" x="35.56" y="4.445" smashed="yes" rot="R270">
-<attribute name="VALUE" x="33.56" y="5.445" size="1.27" layer="27" rot="R270"/>
+<element name="R8" library="rcl" package="R0603" value="220" x="26.3525" y="11.1125" smashed="yes" rot="R270"/>
+<element name="LED8" library="led" package="SML0603" value="" x="28.8925" y="11.1125" smashed="yes" rot="R270">
+<attribute name="VALUE" x="26.8925" y="12.1125" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V7" library="testpad" package="TP13R" value="TPTP13R" x="33.02" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="33.02" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="32.512" y="7.62" size="0.0254" layer="27"/>
+<element name="5V7" library="testpad" package="TP13R" value="TPTP13R" x="26.3525" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="26.3525" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="25.8445" y="13.6525" size="0.0254" layer="27"/>
 </element>
-<element name="GND7" library="testpad" package="TP13SQ" value="TPTP13SQ" x="35.56" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="35.56" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="34.925" y="7.493" size="0.0254" layer="27"/>
+<element name="GND7" library="testpad" package="TP13SQ" value="TPTP13SQ" x="28.8925" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="28.8925" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="28.2575" y="13.5255" size="0.0254" layer="27"/>
 </element>
-<element name="R9" library="rcl" package="R0603" value="220" x="43.18" y="15.875" smashed="yes" rot="R270"/>
-<element name="LED9" library="led" package="SML0603" value="" x="45.72" y="15.875" smashed="yes" rot="R270">
-<attribute name="VALUE" x="43.72" y="16.875" size="1.27" layer="27" rot="R270"/>
+<element name="R9" library="rcl" package="R0603" value="220" x="34.29" y="3.175" smashed="yes" rot="R270"/>
+<element name="LED9" library="led" package="SML0603" value="" x="36.83" y="3.175" smashed="yes" rot="R270">
+<attribute name="VALUE" x="34.83" y="4.175" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V8" library="testpad" package="TP13R" value="TPTP13R" x="43.18" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="43.18" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="42.672" y="19.05" size="0.0254" layer="27"/>
+<element name="5V8" library="testpad" package="TP13R" value="TPTP13R" x="34.29" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="34.29" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="33.782" y="5.715" size="0.0254" layer="27"/>
 </element>
-<element name="GND8" library="testpad" package="TP13SQ" value="TPTP13SQ" x="45.72" y="19.685" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="45.72" y="17.145" size="1" layer="37"/>
-<attribute name="VALUE" x="45.085" y="18.923" size="0.0254" layer="27"/>
+<element name="GND8" library="testpad" package="TP13SQ" value="TPTP13SQ" x="36.83" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="36.83" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="36.195" y="5.588" size="0.0254" layer="27"/>
 </element>
-<element name="R10" library="rcl" package="R0603" value="220" x="43.18" y="4.445" smashed="yes" rot="R270"/>
-<element name="LED10" library="led" package="SML0603" value="" x="45.72" y="4.445" smashed="yes" rot="R270">
-<attribute name="VALUE" x="43.72" y="5.445" size="1.27" layer="27" rot="R270"/>
+<element name="R10" library="rcl" package="R0603" value="220" x="34.29" y="11.1125" smashed="yes" rot="R270"/>
+<element name="LED10" library="led" package="SML0603" value="" x="36.83" y="11.1125" smashed="yes" rot="R270">
+<attribute name="VALUE" x="34.83" y="12.1125" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="5V9" library="testpad" package="TP13R" value="TPTP13R" x="43.18" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="43.18" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="42.672" y="7.62" size="0.0254" layer="27"/>
+<element name="5V9" library="testpad" package="TP13R" value="TPTP13R" x="34.29" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="34.29" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="33.782" y="13.6525" size="0.0254" layer="27"/>
 </element>
-<element name="GND9" library="testpad" package="TP13SQ" value="TPTP13SQ" x="45.72" y="8.255" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="45.72" y="5.715" size="1" layer="37"/>
-<attribute name="VALUE" x="45.085" y="7.493" size="0.0254" layer="27"/>
+<element name="GND9" library="testpad" package="TP13SQ" value="TPTP13SQ" x="36.83" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="36.83" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="36.195" y="13.5255" size="0.0254" layer="27"/>
+</element>
+<element name="R11" library="rcl" package="R0603" value="220" x="42.2275" y="3.175" smashed="yes" rot="R270"/>
+<element name="LED11" library="led" package="SML0603" value="" x="44.7675" y="3.175" smashed="yes" rot="R270">
+<attribute name="VALUE" x="42.7675" y="4.175" size="1.27" layer="27" rot="R270"/>
+</element>
+<element name="5V10" library="testpad" package="TP13R" value="TPTP13R" x="42.2275" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="42.2275" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="41.7195" y="5.715" size="0.0254" layer="27"/>
+</element>
+<element name="GND10" library="testpad" package="TP13SQ" value="TPTP13SQ" x="44.7675" y="6.35" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="44.7675" y="3.81" size="1" layer="37"/>
+<attribute name="VALUE" x="44.1325" y="5.588" size="0.0254" layer="27"/>
+</element>
+<element name="R12" library="rcl" package="R0603" value="220" x="42.2275" y="11.1125" smashed="yes" rot="R270"/>
+<element name="LED12" library="led" package="SML0603" value="" x="44.7675" y="11.1125" smashed="yes" rot="R270">
+<attribute name="VALUE" x="42.7675" y="12.1125" size="1.27" layer="27" rot="R270"/>
+</element>
+<element name="5V11" library="testpad" package="TP13R" value="TPTP13R" x="42.2275" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="42.2275" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="41.7195" y="13.6525" size="0.0254" layer="27"/>
+</element>
+<element name="GND11" library="testpad" package="TP13SQ" value="TPTP13SQ" x="44.7675" y="14.2875" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="44.7675" y="11.7475" size="1" layer="37"/>
+<attribute name="VALUE" x="44.1325" y="13.5255" size="0.0254" layer="27"/>
 </element>
 </elements>
 <signals>
@@ -1539,8 +1571,8 @@ design rules under a new name.</description>
 <contactref element="R1" pad="2"/>
 <contactref element="LED1" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="0" y="3.81"/>
-<vertex x="7.62" y="3.81"/>
+<vertex x="0" y="2.54"/>
+<vertex x="7.62" y="2.54"/>
 <vertex x="7.62" y="0.635"/>
 <vertex x="0" y="0.635"/>
 </polygon>
@@ -1548,241 +1580,291 @@ design rules under a new name.</description>
 <signal name="5V">
 <contactref element="5V" pad="TP"/>
 <contactref element="R1" pad="1"/>
-<wire x1="2.54" y1="8.255" x2="2.54" y2="5.295" width="0.4064" layer="1"/>
+<wire x1="2.54" y1="6.35" x2="2.54" y2="4.025" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND">
 <contactref element="GND" pad="TP"/>
 <contactref element="LED1" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="0" y="5.08"/>
-<vertex x="7.62" y="5.08"/>
-<vertex x="7.62" y="9.525"/>
-<vertex x="0" y="9.525"/>
+<vertex x="3.81" y="3.81"/>
+<vertex x="7.62" y="3.81"/>
+<vertex x="7.62" y="7.62"/>
+<vertex x="3.81" y="7.62"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY1">
 <contactref element="R2" pad="2"/>
 <contactref element="LED2" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="0" y="15.24"/>
-<vertex x="7.62" y="15.24"/>
-<vertex x="7.62" y="12.065"/>
-<vertex x="0" y="12.065"/>
+<vertex x="0" y="10.4775"/>
+<vertex x="7.62" y="10.4775"/>
+<vertex x="7.62" y="8.5725"/>
+<vertex x="0" y="8.5725"/>
 </polygon>
 </signal>
 <signal name="5V1">
 <contactref element="5V1" pad="TP"/>
 <contactref element="R2" pad="1"/>
-<wire x1="2.54" y1="19.685" x2="2.54" y2="16.725" width="0.4064" layer="1"/>
+<wire x1="2.54" y1="14.2875" x2="2.54" y2="11.9625" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND1">
 <contactref element="GND1" pad="TP"/>
 <contactref element="LED2" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="0" y="16.51"/>
-<vertex x="7.62" y="16.51"/>
-<vertex x="7.62" y="20.955"/>
-<vertex x="0" y="20.955"/>
+<vertex x="3.81" y="11.7475"/>
+<vertex x="7.62" y="11.7475"/>
+<vertex x="7.62" y="15.5575"/>
+<vertex x="3.81" y="15.5575"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY2">
 <contactref element="R3" pad="2"/>
 <contactref element="LED3" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="10.16" y="15.24"/>
-<vertex x="17.78" y="15.24"/>
-<vertex x="17.78" y="12.065"/>
-<vertex x="10.16" y="12.065"/>
+<vertex x="7.9375" y="2.54"/>
+<vertex x="15.5575" y="2.54"/>
+<vertex x="15.5575" y="0.635"/>
+<vertex x="7.9375" y="0.635"/>
 </polygon>
 </signal>
 <signal name="5V2">
 <contactref element="5V2" pad="TP"/>
 <contactref element="R3" pad="1"/>
-<wire x1="12.7" y1="19.685" x2="12.7" y2="16.725" width="0.4064" layer="1"/>
+<wire x1="10.4775" y1="6.35" x2="10.4775" y2="4.025" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND2">
 <contactref element="GND2" pad="TP"/>
 <contactref element="LED3" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="10.16" y="16.51"/>
-<vertex x="17.78" y="16.51"/>
-<vertex x="17.78" y="20.955"/>
-<vertex x="10.16" y="20.955"/>
+<vertex x="11.7475" y="3.81"/>
+<vertex x="15.5575" y="3.81"/>
+<vertex x="15.5575" y="7.62"/>
+<vertex x="11.7475" y="7.62"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY3">
 <contactref element="R4" pad="2"/>
 <contactref element="LED4" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="10.16" y="3.81"/>
-<vertex x="17.78" y="3.81"/>
-<vertex x="17.78" y="0.635"/>
-<vertex x="10.16" y="0.635"/>
+<vertex x="7.9375" y="10.4775"/>
+<vertex x="15.5575" y="10.4775"/>
+<vertex x="15.5575" y="8.5725"/>
+<vertex x="7.9375" y="8.5725"/>
 </polygon>
 </signal>
 <signal name="5V3">
 <contactref element="5V3" pad="TP"/>
 <contactref element="R4" pad="1"/>
-<wire x1="12.7" y1="8.255" x2="12.7" y2="5.295" width="0.4064" layer="1"/>
+<wire x1="10.4775" y1="14.2875" x2="10.4775" y2="11.9625" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND3">
 <contactref element="GND3" pad="TP"/>
 <contactref element="LED4" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="10.16" y="5.08"/>
-<vertex x="17.78" y="5.08"/>
-<vertex x="17.78" y="9.525"/>
-<vertex x="10.16" y="9.525"/>
+<vertex x="11.7475" y="11.7475"/>
+<vertex x="15.5575" y="11.7475"/>
+<vertex x="15.5575" y="15.5575"/>
+<vertex x="11.7475" y="15.5575"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY4">
 <contactref element="R5" pad="2"/>
 <contactref element="LED5" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="20.32" y="15.24"/>
-<vertex x="27.94" y="15.24"/>
-<vertex x="27.94" y="12.065"/>
-<vertex x="20.32" y="12.065"/>
+<vertex x="15.875" y="2.54"/>
+<vertex x="23.495" y="2.54"/>
+<vertex x="23.495" y="0.635"/>
+<vertex x="15.875" y="0.635"/>
 </polygon>
 </signal>
 <signal name="5V4">
 <contactref element="5V4" pad="TP"/>
 <contactref element="R5" pad="1"/>
-<wire x1="22.86" y1="19.685" x2="22.86" y2="16.725" width="0.4064" layer="1"/>
+<wire x1="18.415" y1="6.35" x2="18.415" y2="4.025" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND4">
 <contactref element="GND4" pad="TP"/>
 <contactref element="LED5" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="20.32" y="16.51"/>
-<vertex x="27.94" y="16.51"/>
-<vertex x="27.94" y="20.955"/>
-<vertex x="20.32" y="20.955"/>
+<vertex x="19.685" y="3.81"/>
+<vertex x="23.495" y="3.81"/>
+<vertex x="23.495" y="7.62"/>
+<vertex x="19.685" y="7.62"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY5">
 <contactref element="R6" pad="2"/>
 <contactref element="LED6" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="20.32" y="3.81"/>
-<vertex x="27.94" y="3.81"/>
-<vertex x="27.94" y="0.635"/>
-<vertex x="20.32" y="0.635"/>
+<vertex x="15.875" y="10.4775"/>
+<vertex x="23.495" y="10.4775"/>
+<vertex x="23.495" y="8.5725"/>
+<vertex x="15.875" y="8.5725"/>
 </polygon>
 </signal>
 <signal name="5V5">
 <contactref element="5V5" pad="TP"/>
 <contactref element="R6" pad="1"/>
-<wire x1="22.86" y1="8.255" x2="22.86" y2="5.295" width="0.4064" layer="1"/>
+<wire x1="18.415" y1="14.2875" x2="18.415" y2="11.9625" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND5">
 <contactref element="GND5" pad="TP"/>
 <contactref element="LED6" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="20.32" y="5.08"/>
-<vertex x="27.94" y="5.08"/>
-<vertex x="27.94" y="9.525"/>
-<vertex x="20.32" y="9.525"/>
+<vertex x="19.685" y="11.7475"/>
+<vertex x="23.495" y="11.7475"/>
+<vertex x="23.495" y="15.5575"/>
+<vertex x="19.685" y="15.5575"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY6">
 <contactref element="R7" pad="2"/>
 <contactref element="LED7" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="30.48" y="15.24"/>
-<vertex x="38.1" y="15.24"/>
-<vertex x="38.1" y="12.065"/>
-<vertex x="30.48" y="12.065"/>
+<vertex x="23.8125" y="2.54"/>
+<vertex x="31.4325" y="2.54"/>
+<vertex x="31.4325" y="0.635"/>
+<vertex x="23.8125" y="0.635"/>
 </polygon>
 </signal>
 <signal name="5V6">
 <contactref element="5V6" pad="TP"/>
 <contactref element="R7" pad="1"/>
-<wire x1="33.02" y1="19.685" x2="33.02" y2="16.725" width="0.4064" layer="1"/>
+<wire x1="26.3525" y1="6.35" x2="26.3525" y2="4.025" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND6">
 <contactref element="GND6" pad="TP"/>
 <contactref element="LED7" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="30.48" y="16.51"/>
-<vertex x="38.1" y="16.51"/>
-<vertex x="38.1" y="20.955"/>
-<vertex x="30.48" y="20.955"/>
+<vertex x="27.6225" y="3.81"/>
+<vertex x="31.4325" y="3.81"/>
+<vertex x="31.4325" y="7.62"/>
+<vertex x="27.6225" y="7.62"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY7">
 <contactref element="R8" pad="2"/>
 <contactref element="LED8" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="30.48" y="3.81"/>
-<vertex x="38.1" y="3.81"/>
-<vertex x="38.1" y="0.635"/>
-<vertex x="30.48" y="0.635"/>
+<vertex x="23.8125" y="10.4775"/>
+<vertex x="31.4325" y="10.4775"/>
+<vertex x="31.4325" y="8.5725"/>
+<vertex x="23.8125" y="8.5725"/>
 </polygon>
 </signal>
 <signal name="5V7">
 <contactref element="5V7" pad="TP"/>
 <contactref element="R8" pad="1"/>
-<wire x1="33.02" y1="8.255" x2="33.02" y2="5.295" width="0.4064" layer="1"/>
+<wire x1="26.3525" y1="14.2875" x2="26.3525" y2="11.9625" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND7">
 <contactref element="GND7" pad="TP"/>
 <contactref element="LED8" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="30.48" y="5.08"/>
-<vertex x="38.1" y="5.08"/>
-<vertex x="38.1" y="9.525"/>
-<vertex x="30.48" y="9.525"/>
+<vertex x="27.6225" y="11.7475"/>
+<vertex x="31.4325" y="11.7475"/>
+<vertex x="31.4325" y="15.5575"/>
+<vertex x="27.6225" y="15.5575"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY8">
 <contactref element="R9" pad="2"/>
 <contactref element="LED9" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="40.64" y="15.24"/>
-<vertex x="48.26" y="15.24"/>
-<vertex x="48.26" y="12.065"/>
-<vertex x="40.64" y="12.065"/>
+<vertex x="31.75" y="2.54"/>
+<vertex x="39.37" y="2.54"/>
+<vertex x="39.37" y="0.635"/>
+<vertex x="31.75" y="0.635"/>
 </polygon>
 </signal>
 <signal name="5V8">
 <contactref element="5V8" pad="TP"/>
 <contactref element="R9" pad="1"/>
-<wire x1="43.18" y1="19.685" x2="43.18" y2="16.725" width="0.4064" layer="1"/>
+<wire x1="34.29" y1="6.35" x2="34.29" y2="4.025" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND8">
 <contactref element="GND8" pad="TP"/>
 <contactref element="LED9" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="40.64" y="16.51"/>
-<vertex x="48.26" y="16.51"/>
-<vertex x="48.26" y="20.955"/>
-<vertex x="40.64" y="20.955"/>
+<vertex x="35.56" y="3.81"/>
+<vertex x="39.37" y="3.81"/>
+<vertex x="39.37" y="7.62"/>
+<vertex x="35.56" y="7.62"/>
 </polygon>
 </signal>
 <signal name="LEDSUPPLY9">
 <contactref element="R10" pad="2"/>
 <contactref element="LED10" pad="A"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="40.64" y="3.81"/>
-<vertex x="48.26" y="3.81"/>
-<vertex x="48.26" y="0.635"/>
-<vertex x="40.64" y="0.635"/>
+<vertex x="31.75" y="10.4775"/>
+<vertex x="39.37" y="10.4775"/>
+<vertex x="39.37" y="8.5725"/>
+<vertex x="31.75" y="8.5725"/>
 </polygon>
 </signal>
 <signal name="5V9">
 <contactref element="5V9" pad="TP"/>
 <contactref element="R10" pad="1"/>
-<wire x1="43.18" y1="8.255" x2="43.18" y2="5.295" width="0.4064" layer="1"/>
+<wire x1="34.29" y1="14.2875" x2="34.29" y2="11.9625" width="0.4064" layer="1"/>
 </signal>
 <signal name="GND9">
 <contactref element="GND9" pad="TP"/>
 <contactref element="LED10" pad="C"/>
 <polygon width="0.4064" layer="1" isolate="0.4064">
-<vertex x="40.64" y="5.08"/>
-<vertex x="48.26" y="5.08"/>
-<vertex x="48.26" y="9.525"/>
-<vertex x="40.64" y="9.525"/>
+<vertex x="35.56" y="11.7475"/>
+<vertex x="39.37" y="11.7475"/>
+<vertex x="39.37" y="15.5575"/>
+<vertex x="35.56" y="15.5575"/>
+</polygon>
+</signal>
+<signal name="LEDSUPPLY10">
+<contactref element="R11" pad="2"/>
+<contactref element="LED11" pad="A"/>
+<polygon width="0.4064" layer="1" isolate="0.4064">
+<vertex x="39.6875" y="2.54"/>
+<vertex x="47.3075" y="2.54"/>
+<vertex x="47.3075" y="0.635"/>
+<vertex x="39.6875" y="0.635"/>
+</polygon>
+</signal>
+<signal name="5V10">
+<contactref element="5V10" pad="TP"/>
+<contactref element="R11" pad="1"/>
+<wire x1="42.2275" y1="6.35" x2="42.2275" y2="4.025" width="0.4064" layer="1"/>
+</signal>
+<signal name="GND10">
+<contactref element="GND10" pad="TP"/>
+<contactref element="LED11" pad="C"/>
+<polygon width="0.4064" layer="1" isolate="0.4064">
+<vertex x="43.4975" y="3.81"/>
+<vertex x="47.3075" y="3.81"/>
+<vertex x="47.3075" y="7.62"/>
+<vertex x="43.4975" y="7.62"/>
+</polygon>
+</signal>
+<signal name="LEDSUPPLY11">
+<contactref element="R12" pad="2"/>
+<contactref element="LED12" pad="A"/>
+<polygon width="0.4064" layer="1" isolate="0.4064">
+<vertex x="39.6875" y="10.4775"/>
+<vertex x="47.3075" y="10.4775"/>
+<vertex x="47.3075" y="8.5725"/>
+<vertex x="39.6875" y="8.5725"/>
+</polygon>
+</signal>
+<signal name="5V11">
+<contactref element="5V11" pad="TP"/>
+<contactref element="R12" pad="1"/>
+<wire x1="42.2275" y1="14.2875" x2="42.2275" y2="11.9625" width="0.4064" layer="1"/>
+</signal>
+<signal name="GND11">
+<contactref element="GND11" pad="TP"/>
+<contactref element="LED12" pad="C"/>
+<polygon width="0.4064" layer="1" isolate="0.4064">
+<vertex x="43.4975" y="11.7475"/>
+<vertex x="47.3075" y="11.7475"/>
+<vertex x="47.3075" y="15.5575"/>
+<vertex x="43.4975" y="15.5575"/>
 </polygon>
 </signal>
 </signals>
