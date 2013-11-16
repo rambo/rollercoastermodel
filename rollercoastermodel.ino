@@ -1,6 +1,7 @@
 // Note uses the *new* LiquidCrystal library https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home
 #include <Wire.h>
 #include <LCD.h>
+// TODO:switch to SR3W (and rewire accordingly)
 #include <LiquidCrystal_SR.h>
 
 // ShiftPWM library, use my fork: https://github.com/rambo/ShiftPWM
