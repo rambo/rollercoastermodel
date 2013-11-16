@@ -18,7 +18,7 @@ uint8_t numRegisters = 1;
 
 // constructor prototype parameter:
 //  LiquidCrystal_SR lcd(DataPin, ClockPin, EnablePin);
-LiquidCrystal_SR lcd(2, 3, 4); 
+LiquidCrystal_SR lcd(A0, A1, A2); 
 
 
 void setup ( )
@@ -42,6 +42,7 @@ void setup ( )
     ShiftPWM.SetAll(maxBrightness);
     ShiftPWM.PrintInterruptLoad();
     delay(1000);
+    ShiftPWM.SetAll(0);
 
 }
 
@@ -53,7 +54,6 @@ void loop ()
     lcd.print(F("Hello World "));
     lcd.print(i, DEC);
 
-    /*
     for (uint8_t ii = 0; ii < (numRegisters*8) ; ii++)
     {
         if (ii > 0)
@@ -64,7 +64,7 @@ void loop ()
         delay(100);
     }
     ShiftPWM.PrintInterruptLoad();
-    */
+    ShiftPWM.OneByOneSlow();
 
     delay(100);
 }
