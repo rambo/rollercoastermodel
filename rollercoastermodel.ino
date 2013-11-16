@@ -8,6 +8,7 @@
 const uint8_t ShiftPWM_latchPin=10;
 const bool ShiftPWM_invertOutputs = false; 
 const bool ShiftPWM_balanceLoad = false;
+#define SHIFTPWM_USE_TIMER2
 #include <ShiftPWM.h>   // include ShiftPWM.h after setting the pins!
 
 uint8_t maxBrightness = 255;
@@ -52,6 +53,7 @@ void loop ()
     lcd.print(F("Hello World "));
     lcd.print(i, DEC);
 
+    /*
     for (uint8_t ii = 0; ii < (numRegisters*8) ; ii++)
     {
         if (ii > 0)
@@ -62,6 +64,7 @@ void loop ()
         delay(100);
     }
     ShiftPWM.PrintInterruptLoad();
+    */
 
     delay(100);
 }
