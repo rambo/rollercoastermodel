@@ -56,10 +56,6 @@ void loop ()
 
     for (uint8_t ii = 0; ii < (numRegisters*8) ; ii++)
     {
-        if (ii > 0)
-        {
-            ShiftPWM.SetOne(ii-1, maxBrightness);
-        }
         ShiftPWM.SetOne(ii, maxBrightness);
         delay(100);
     }
