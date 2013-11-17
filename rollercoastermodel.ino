@@ -1,6 +1,9 @@
 #include <avr/pgmspace.h>
 // From http://forum.arduino.cc/index.php?topic=110307.0
 #define FS(x) (__FlashStringHelper*)(x)
+// My improvement for array access (idea from http://forum.arduino.cc/index.php?topic=106603.0)
+#define FSA(x) FS(pgm_read_word(&(x)))
+
 // Generic helper implementation
 #define ARRAY_SIZE(a)      (sizeof(a) / sizeof(a[0]))
 

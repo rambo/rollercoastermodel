@@ -149,11 +149,6 @@ void UITask::run(uint32_t now)
             button_clicked = true;
             input_seen = true;
         }
-        else
-        {
-            reset_sleep_timer();
-            // pass
-        }
     }
 
     thisEncoder = AdaEncoder::genie(&clicks, &encoder_id);
@@ -188,6 +183,7 @@ void UITask::run(uint32_t now)
         {
             if (redraw_needed)
             {
+                Serial.println(F("Status menu"));
                 lcd.clear();
                 lcd.setCursor(2, 0); // cols, rows
                 lcd.print(F("Coaster Ctrl"));
@@ -211,6 +207,7 @@ void UITask::run(uint32_t now)
             {
                 current_state = ROOT;
                 redraw_needed = true;
+                return;
             }
             break;
         }
@@ -230,28 +227,28 @@ void UITask::run(uint32_t now)
             }
             if (button_clicked)
             {
+                Serial.print(F("Selected menu index ")); Serial.println(current_menu_index, DEC);
                 switch(current_menu_index)
                 {
                     case 0:
                         current_state = STATUS;
+                        return;
                     break;
                 }
             }
             if (redraw_needed)
             {
                 Serial.println(F("Root menu"));
-                Serial.print(F("ARRAY_SIZE(root_menu)="));
-                uint8_t tmp = ARRAY_SIZE(root_menu);
-                Serial.println(tmp, DEC);
+                Serial.print(F("ARRAY_SIZE(root_menu)=")); Serial.println(ARRAY_SIZE(root_menu), DEC);
                 Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
-                Serial.print(F("current_menu_item=")); Serial.println(FS(root_menu[current_menu_index]));
+                Serial.print(F("current_menu_item=")); Serial.println(FSA(root_menu[current_menu_index]));
 
                 lcd.clear();
-                lcd.print(FS(root_menu[current_menu_index]));
+                lcd.print(FSA(root_menu[current_menu_index]));
                 if (current_menu_index < (ARRAY_SIZE(root_menu)-1))
                 {
                     lcd.setCursor(0, 1); // cols, rows
-                    lcd.print(FS(root_menu[(current_menu_index+1)]));
+                    lcd.print(FSA(root_menu[(current_menu_index+1)]));
                 }
                 lcd.setCursor(0, 0); // cols, rows
                 lcd.blink();
