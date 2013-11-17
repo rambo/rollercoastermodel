@@ -172,11 +172,13 @@ void UITask::run(uint32_t now)
     {
         case SLEEPING:
             // Do nothing, the wakeup routines will take care of everything
+            return;
         break;
         case WAKEUP:
             // Discard UI interaction used to wake us up and wake up fully
             current_state = STATUS;
             redraw_needed = true;
+            return;
         break;
         
         case STATUS:

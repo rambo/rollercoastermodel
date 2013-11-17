@@ -45,6 +45,7 @@ void MotorTimer::run(uint32_t now)
         case UNINITIALIZED:
         {
             state = STOPPED;
+            return;
             break;
         }
         case STOPPED:
@@ -52,6 +53,7 @@ void MotorTimer::run(uint32_t now)
             incRunTime(global_config.motor_run_wait);
             state = RUNNING;
             analogWrite(pin, global_config.motor_speed);
+            return;
             break;
         }
         case RUNNING:
@@ -59,12 +61,15 @@ void MotorTimer::run(uint32_t now)
             incRunTime(global_config.motor_stop_wait);
             state = STOPPED;
             analogWrite(pin, 0);
+            return;
             break;
         }
         case FROZEN:
         {
             // TODO: Overload the canRun method instead of using the timer
             incRunTime(global_config.motor_stop_wait);
+            return;
+            break;
         }
     }
 }
