@@ -1692,6 +1692,10 @@ CLK = 13
 MOSI = 11</text>
 <text x="-15.24" y="104.14" size="1.778" layer="97">Arduino pins:
 3,5,6,9,10</text>
+<text x="78.74" y="17.78" size="1.778" layer="97">TODO: mark the QA output to correct pin
+(forgot to shift the 595s by one...) </text>
+<text x="25.4" y="119.38" size="1.778" layer="97">TODO: LED13-15 signals are not wired to the darlington
+right now, will maybe do it later if it's needed.</text>
 </plain>
 <instances>
 <instance part="LED_CTRL" gate="A" x="7.62" y="66.04" rot="R180"/>
