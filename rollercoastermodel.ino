@@ -1,5 +1,3 @@
-
-
 // Note uses the *new* LiquidCrystal library https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home
 #include <Wire.h>
 #include <LCD.h>
@@ -43,8 +41,10 @@ void config_defaults()
     global_config.motor_stop_wait = 5000;
     global_config.motor_run_wait  = 2000;
     global_config.motor_speed     = 180; // 71% which should be close to the ~8.6V the original 555-box did.
-    // This might not be the correct way...
-    memset(&(global_config.led_pwm_values), 255, sizeof(global_config.led_pwm_values));
+
+    global_config.global_dimmer_adjust = 0;
+    // I'm not 100% that is the correct way to point to a struct member but it does compile...
+    memset(global_config.led_pwm_values, 255, sizeof(global_config.led_pwm_values));
 }
 
 void config_eeprom_read()
