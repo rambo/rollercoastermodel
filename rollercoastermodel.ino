@@ -47,12 +47,31 @@ void config_defaults()
     memset(global_config.led_pwm_values, 255, sizeof(global_config.led_pwm_values));
 }
 
+void dump_config()
+{
+    Serial.println(F("global_config:"));
+    Serial.print(F("  magic_number = 0x")); Serial.println(global_config.magic_number, HEX);
+    Serial.print(F("  ui_idle_timeout = ")); Serial.println(global_config.ui_idle_timeout, DEC);
+    Serial.print(F("  motor_stop_wait = ")); Serial.println(global_config.motor_stop_wait, DEC);
+    Serial.print(F("  motor_run_wait = ")); Serial.println(global_config.motor_run_wait, DEC);
+    Serial.print(F("  motor_speed = ")); Serial.println(global_config.motor_speed, DEC);
+    Serial.print(F("  global_dimmer_adjust = ")); Serial.println(global_config.global_dimmer_adjust, DEC);
+    for (uint8_t i = 0; i < sizeof(global_config.led_pwm_values); i++)
+    {
+        Serial.print(F("  led_pwm_values["));
+        Serial.print(i, DEC);
+        Serial.print(F("] = "));
+        Serial.println(global_config.led_pwm_values[i], DEC);
+    }
+}
+
 void config_eeprom_read()
 {
     eeprom_read_block((void*)&global_config, (void*)0, sizeof(global_config));
     if (global_config.magic_number != 0xdead)
     {
         // Insane value, restore defaults
+        Serial.println(F("EEPROM config magic number was insane, loading defaults"));
         config_defaults();
     }
 }
@@ -96,6 +115,7 @@ void setup ( )
 {
     Serial.begin(57600);
     config_eeprom_read();
+    dump_config();
 
     // Init LCD
     lcd.begin ( 16, 2 );
