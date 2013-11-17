@@ -3572,8 +3572,8 @@ CLK = A1
 MOSI = A2</text>
 <text x="-12.7" y="12.7" size="1.778" layer="97">Arduino pins:
 ROTA = A3
-ROTB = A4
-ROTPB = A5</text>
+ROTB = A5
+ROTPB = A4</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="114.3" y="48.26"/>
@@ -3665,9 +3665,9 @@ ROTPB = A5</text>
 <label x="129.54" y="7.62" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="ROT_CTRL" gate="A" pin="3"/>
-<wire x1="10.16" y1="15.24" x2="15.24" y2="15.24" width="0.1524" layer="91"/>
-<label x="15.24" y="15.24" size="1.778" layer="95"/>
+<pinref part="ROT_CTRL" gate="A" pin="2"/>
+<wire x1="10.16" y1="12.7" x2="15.24" y2="12.7" width="0.1524" layer="91"/>
+<label x="15.24" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="ROTA" class="0">
@@ -3689,9 +3689,9 @@ ROTPB = A5</text>
 <label x="88.9" y="7.62" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="ROT_CTRL" gate="A" pin="2"/>
-<wire x1="10.16" y1="12.7" x2="15.24" y2="12.7" width="0.1524" layer="91"/>
-<label x="15.24" y="12.7" size="1.778" layer="95"/>
+<pinref part="ROT_CTRL" gate="A" pin="3"/>
+<wire x1="10.16" y1="15.24" x2="15.24" y2="15.24" width="0.1524" layer="91"/>
+<label x="15.24" y="15.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
