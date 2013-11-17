@@ -1870,14 +1870,14 @@ MOSI = 11</text>
 <label x="30.48" y="48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="LED_CTRL" gate="A" pin="2"/>
-<wire x1="10.16" y1="66.04" x2="15.24" y2="66.04" width="0.1524" layer="91"/>
-<label x="15.24" y="66.04" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="IC2" gate="A" pin="SCK"/>
 <wire x1="40.64" y1="7.62" x2="35.56" y2="7.62" width="0.1524" layer="91"/>
 <label x="30.48" y="7.62" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="LED_CTRL" gate="A" pin="1"/>
+<wire x1="10.16" y1="63.5" x2="15.24" y2="63.5" width="0.1524" layer="91"/>
+<label x="15.24" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SS" class="0">
@@ -1887,14 +1887,14 @@ MOSI = 11</text>
 <label x="30.48" y="40.64" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="LED_CTRL" gate="A" pin="1"/>
-<wire x1="10.16" y1="63.5" x2="15.24" y2="63.5" width="0.1524" layer="91"/>
-<label x="15.24" y="63.5" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="IC2" gate="A" pin="RCK"/>
 <wire x1="40.64" y1="0" x2="35.56" y2="0" width="0.1524" layer="91"/>
 <label x="30.48" y="0" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="LED_CTRL" gate="A" pin="2"/>
+<wire x1="10.16" y1="66.04" x2="15.24" y2="66.04" width="0.1524" layer="91"/>
+<label x="15.24" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED0" class="0">
