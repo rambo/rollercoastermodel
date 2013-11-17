@@ -1,6 +1,6 @@
 #ifndef UITASK_H
 #define UITASK_H
-
+#include <avr/pgmspace.h>
 #include <Arduino.h>
 #include <Task.h>
 
@@ -15,9 +15,7 @@ enum UIState {
 
 
 
-#include <avr/pgmspace.h>
-#define FS(x) (__FlashStringHelper*)(x)
-
+// Menu strings
 const char string_back[] PROGMEM = "Back";
 const char string_motor_ctrl[] PROGMEM = "Motor control";
 const char string_freeze[] PROGMEM = "Freeze";
@@ -31,7 +29,7 @@ const char string_confirm[] PROGMEM = "Confirm";
 const char string_dimmer[] PROGMEM = "Dimmer control";
 const char string_leds[] PROGMEM = "LED control";
 
-
+// Root menu items
 const char* const root_menu[] PROGMEM =
 {
     string_back,
@@ -40,7 +38,7 @@ const char* const root_menu[] PROGMEM =
     string_leds,
     string_save
 };
-
+const char* menuitemptr;
 /**
  * Menu structure plan
 
@@ -218,9 +216,44 @@ void UITask::run(uint32_t now)
         }
         case ROOT:
         {
+            if (current_menu_index < 0)
+            {
+                current_menu_index = ARRAY_SIZE(root_menu)-1;
+            }
+            if (current_menu_index > ARRAY_SIZE(root_menu)-1)
+            {
+                current_menu_index = 0;
+            }
+            if (input_seen)
+            {
+                redraw_needed = true;
+            }
+            if (button_clicked)
+            {
+                switch(current_menu_index)
+                {
+                }
+            }
             if (redraw_needed)
             {
+                Serial.println(F("Root menu"));
+                Serial.print(F("ARRAY_SIZE(root_menu)="));
+                uint8_t tmp = ARRAY_SIZE(root_menu);
+                Serial.println(tmp, DEC);
+                Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
+
                 lcd.clear();
+                menuitemptr = root_menu[current_menu_index];
+                lcd.print(FS(menuitemptr));
+                if (current_menu_index < ARRAY_SIZE(root_menu)-1)
+                {
+                    lcd.setCursor(0, 1); // cols, rows
+                    menuitemptr = root_menu[current_menu_index+1];
+                    lcd.print(FS(menuitemptr));
+                }
+                lcd.setCursor(0, 0); // cols, rows
+                lcd.blink();
+                
                 redraw_needed = false;
             }
             break;

@@ -1,3 +1,10 @@
+#include <avr/pgmspace.h>
+// From http://forum.arduino.cc/index.php?topic=110307.0
+#define FS(x) (__FlashStringHelper*)(x)
+// Generic helper implementation
+#define ARRAY_SIZE(a)      (sizeof(a) / sizeof(a[0]))
+
+
 // Note uses the *new* LiquidCrystal library https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home
 #include <Wire.h>
 #include <LCD.h>
