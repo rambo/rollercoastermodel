@@ -9,7 +9,7 @@ typedef struct {
     uint16_t motor_run_wait;
     uint8_t  motor_speed;
     uint16_t ui_idle_timeout;
-    int16_t  global_dimmer_adjust; // We need to catch going below 0 without overflow (ditto for going over 255)
+    int16_t  global_dimmer_adjust; // We need we need -255 to 255 inclusive and catch going beyond those without overflows
     uint8_t  led_pwm_values[(numRegisters*8)];
     
     uint16_t magic_number;

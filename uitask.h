@@ -17,9 +17,11 @@ class UITask : public Task
         UITask();
         virtual void run(uint32_t now);
         virtual bool canRun(uint32_t now);
+        void reset_sleep_timer();
     private:
         UIState mainstate;
         // Do we need to track substate ? probably...
+        uint32_t last_activity;
 };
 
 UITask::UITask()
@@ -32,6 +34,11 @@ bool UITask::canRun(uint32_t now)
     return true;
 }
 
+void UITask::reset_sleep_timer()
+{
+    last_activity = millis();
+}
+
 void UITask::run(uint32_t now)
 {
     if (bouncer.update())
@@ -42,11 +49,13 @@ void UITask::run(uint32_t now)
         // Switch connects to ground, pin is pulled up internally
         if (bouncer_value == LOW)
         {
+            reset_sleep_timer();
             // pass
             motortimer.freeze();
         }
         else
         {
+            reset_sleep_timer();
             // pass
         }
     }
@@ -54,6 +63,7 @@ void UITask::run(uint32_t now)
     thisEncoder = AdaEncoder::genie(&clicks, &encoder_id);
     if (thisEncoder != NULL)
     {
+        reset_sleep_timer();
         thisEncoder = AdaEncoder::getFirstEncoder();
         // clicks has the movement value
         Serial.print(F("clicks="));
@@ -64,9 +74,9 @@ void UITask::run(uint32_t now)
         {
             global_config.global_dimmer_adjust = 255;
         }
-        if (global_config.global_dimmer_adjust < 0 )
+        if (global_config.global_dimmer_adjust < -255 )
         {
-            global_config.global_dimmer_adjust = 0;
+            global_config.global_dimmer_adjust = -255;
         }
         Serial.print(F("global_dimmer_adjust = ")); Serial.println(global_config.global_dimmer_adjust, DEC);
         update_shiftpwm_all();
