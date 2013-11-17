@@ -19,7 +19,7 @@ CoasterConfig global_config;
 void config_defaults()
 {
     global_config.magic_number    = 0xdead;
-    global_config.ui_idle_timeout = 10000;
+    global_config.ui_idle_timeout = 30000;
     global_config.motor_stop_wait = 5000;
     global_config.motor_run_wait  = 2000;
     global_config.motor_speed     = 180; // 71% which should be close to the ~8.6V the original 555-box did.
