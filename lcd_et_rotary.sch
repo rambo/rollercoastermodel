@@ -3562,6 +3562,10 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <sheets>
 <sheet>
 <plain>
+<text x="157.48" y="40.64" size="1.778" layer="97" rot="R180">NOTE: I replaced a 0R resistor 
+on the LCD with 22R one.
+That's why there is no resistor on
+the backlight in the schematic</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="96.52" y="48.26"/>
@@ -3798,4 +3802,10 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 </sheets>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
