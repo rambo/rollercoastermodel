@@ -16,7 +16,7 @@ const bool ShiftPWM_balanceLoad = false;
 // These are config variables ShiftPWM uses
 uint8_t maxBrightness = 255;
 uint8_t pwmFrequency = 120;
-uint8_t numRegisters = 1;
+uint8_t numRegisters = 2;
 //Usable HW-PWM pins: 3,5,6,9 & 10 (11 is taken by SPI  above)
 
 
@@ -122,15 +122,13 @@ void loop ()
         }
     }
 
-    /*
     for (uint8_t ii = 0; ii < (numRegisters*8) ; ii++)
     {
         ShiftPWM.SetOne(ii, maxBrightness);
         delay(100);
     }
-    ShiftPWM.PrintInterruptLoad();
     ShiftPWM.OneByOneFast();
-    */
+    ShiftPWM.PrintInterruptLoad();
 
     delay(100);
 }
