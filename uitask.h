@@ -16,7 +16,7 @@ enum UIState {
 
 
 // Menu strings
-const char string_back[] PROGMEM = "Back";
+const char string_back[] PROGMEM = { "Back" };
 const char string_motor_ctrl[] PROGMEM = "Motor control";
 const char string_freeze[] PROGMEM = "Freeze";
 const char string_unfreeze[] PROGMEM = "Unfreeze";
@@ -38,7 +38,7 @@ const char* const root_menu[] PROGMEM =
     string_leds,
     string_save
 };
-const char* menuitemptr;
+
 /**
  * Menu structure plan
 
@@ -232,6 +232,9 @@ void UITask::run(uint32_t now)
             {
                 switch(current_menu_index)
                 {
+                    case 0:
+                        current_state = STATUS;
+                    break;
                 }
             }
             if (redraw_needed)
@@ -243,13 +246,11 @@ void UITask::run(uint32_t now)
                 Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
 
                 lcd.clear();
-                menuitemptr = root_menu[current_menu_index];
-                lcd.print(FS(menuitemptr));
-                if (current_menu_index < ARRAY_SIZE(root_menu)-1)
+                lcd.print(FS(root_menu[current_menu_index]));
+                if (current_menu_index < (ARRAY_SIZE(root_menu)-1))
                 {
                     lcd.setCursor(0, 1); // cols, rows
-                    menuitemptr = root_menu[current_menu_index+1];
-                    lcd.print(FS(menuitemptr));
+                    lcd.print(FS(root_menu[(current_menu_index+1)]));
                 }
                 lcd.setCursor(0, 0); // cols, rows
                 lcd.blink();
