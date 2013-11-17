@@ -24,7 +24,7 @@ void config_defaults()
     global_config.motor_run_wait  = 2000;
     global_config.motor_speed     = 180; // 71% which should be close to the ~8.6V the original 555-box did.
 
-    global_config.global_dimmer_adjust = 0;
+    global_config.global_dimmer_adjust = -200;
     // I'm not 100% that is the correct way to point to a struct member but it does compile...
     memset(global_config.led_pwm_values, 255, sizeof(global_config.led_pwm_values));
 }
