@@ -26,7 +26,7 @@ uint8_t numRegisters = 2;
 #include <AdaEncoder.h>
 // Used by the encoder
 int8_t clicks;
-char id;
+char encoder_id;
 encoder *thisEncoder;
 
 
@@ -35,6 +35,17 @@ encoder *thisEncoder;
 Bounce bouncer = Bounce(A4, 10);
 byte bouncer_value=HIGH;
 
+
+// Get this library from http://bleaklow.com/files/2010/Task.tar.gz (and fix WProgram.h -> Arduino.h)
+// and read http://bleaklow.com/2010/07/20/a_very_simple_arduino_task_manager.html for background and instructions
+#include <Task.h>
+#include <TaskScheduler.h>
+
+#include "motortimertask.h"
+MotorTimer motortimer(9);
+
+#include "uitask.h"
+UITask uitask;
 
 void setup ( )
 {
@@ -75,60 +86,12 @@ void setup ( )
     
 }
 
-int motor_pwm = 0; // We use the rotary to adjust this, must catch above 255 and below 0 conditions
-uint16_t i = 0;
 void loop ()
 {
-    i++;
-//    lcd.setBacklight(HIGH);
-    lcd.clear();
-    lcd.print(F("Hello World "));
-    lcd.print(i, DEC);
-
-    thisEncoder = AdaEncoder::genie(&clicks, &id);
-    if (thisEncoder != NULL)
-    {
-        thisEncoder = AdaEncoder::getFirstEncoder();
-        // clicks has the movement value
-        Serial.print(F("clicks="));
-        Serial.println(clicks, DEC);
-        motor_pwm += (clicks*5);
-        if (motor_pwm < 0)
-        {
-            motor_pwm = 0;
-        }
-        if (motor_pwm > 255)
-        {
-            motor_pwm = 255;
-        }
-        analogWrite(9, motor_pwm);
-        Serial.print(F("motor_pwm="));
-        Serial.println(motor_pwm, DEC);
-    }
-
-    if (bouncer.update())
-    {
-        bouncer_value = bouncer.read();
-        Serial.print(F("bouncer_value=0x"));
-        Serial.println(bouncer_value, HEX);
-        // Switch connects to ground, pin is pulled up internally
-        if (bouncer_value == LOW)
-        {
-            // pass
-        }
-        else
-        {
-            // pass
-        }
-    }
-
-    for (uint8_t ii = 0; ii < (numRegisters*8) ; ii++)
-    {
-        ShiftPWM.SetOne(ii, maxBrightness);
-        delay(100);
-    }
-    ShiftPWM.OneByOneFast();
-    ShiftPWM.PrintInterruptLoad();
-
-    delay(100);
+    // Initialise the task list and scheduler. (uitask must be the last one, otherwise it robs priority from everything else)
+    Task *tasks[] = { &motortimer, &uitask };
+    TaskScheduler sched(tasks, NUM_TASKS(tasks));
+    
+    // Run the scheduler - never returns.
+    sched.run();
 }
