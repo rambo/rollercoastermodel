@@ -3567,9 +3567,9 @@ on the LCD with 22R one.
 That's why there is no resistor on
 the backlight in the schematic</text>
 <text x="-10.16" y="66.04" size="1.778" layer="97">Arduino pins:
-MOSI = A0
-SS = A1
-CLK = A2</text>
+SS = A0
+CLK = A1
+MOSI = A2</text>
 <text x="-12.7" y="12.7" size="1.778" layer="97">Arduino pins:
 ROTA = A3
 ROTB = A4
@@ -3713,9 +3713,9 @@ ROTPB = A5</text>
 <label x="30.48" y="48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="LCD_CTRL" gate="A" pin="1"/>
-<wire x1="10.16" y1="63.5" x2="15.24" y2="63.5" width="0.1524" layer="91"/>
-<label x="15.24" y="63.5" size="1.778" layer="95"/>
+<pinref part="LCD_CTRL" gate="A" pin="2"/>
+<wire x1="10.16" y1="66.04" x2="15.24" y2="66.04" width="0.1524" layer="91"/>
+<label x="15.24" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SS" class="0">
@@ -3725,9 +3725,9 @@ ROTPB = A5</text>
 <label x="30.48" y="40.64" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="LCD_CTRL" gate="A" pin="2"/>
-<wire x1="10.16" y1="66.04" x2="15.24" y2="66.04" width="0.1524" layer="91"/>
-<label x="15.24" y="66.04" size="1.778" layer="95"/>
+<pinref part="LCD_CTRL" gate="A" pin="1"/>
+<wire x1="10.16" y1="63.5" x2="15.24" y2="63.5" width="0.1524" layer="91"/>
+<label x="15.24" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CONTRAST" class="0">
