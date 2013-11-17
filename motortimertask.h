@@ -23,6 +23,7 @@ class MotorTimer : public TimedTask
         virtual void run(uint32_t now);
         void freeze();
         void thaw();
+        boolean is_frozen();
         
     private:
         uint8_t pin;      // LED pin.
@@ -67,6 +68,12 @@ void MotorTimer::run(uint32_t now)
         }
     }
 }
+
+boolean MotorTimer::is_frozen()
+{
+    return (state == FROZEN);
+}
+
 
 void MotorTimer::freeze()
 {

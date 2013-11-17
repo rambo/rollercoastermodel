@@ -7,10 +7,45 @@
 enum UIState { 
     SLEEPING,
     WAKEUP,
+    STATUS,
     ROOT,
     MOTORMENU,
     LEDMENU
 };
+
+/**
+ * Menu structure plan
+
+  - Motor
+    - back
+    - freeze/unfreeze
+      - confirm
+    - Timer
+      - back
+      - On time
+         - back
+         - edit
+      - off time
+         - back
+         - edit
+    - speed
+      - back
+      - edit
+  - Global dimmer
+    - back
+    - edit
+  - LEDS
+    - index for each
+       - back
+       - edit
+  - Save settings
+    - back
+    - Confirm
+  
+ 
+ 
+ 
+ */
 
 class UITask : public Task
 {
@@ -23,14 +58,19 @@ class UITask : public Task
         void wakeup();
     private:
         void check_sleep_timer();
-        UIState mainstate;
+        UIState current_state;
+        UIState prevstate;
+        int8_t current_menu_index;
         // Do we need to track substate ? probably...
         uint32_t last_activity;
+        boolean redraw_needed;
 };
 
 UITask::UITask()
 : Task()
 {
+    current_state = STATUS;
+    redraw_needed = true;
 }
 
 bool UITask::canRun(uint32_t now)
@@ -40,14 +80,14 @@ bool UITask::canRun(uint32_t now)
 
 void UITask::sleep()
 {
-    mainstate = SLEEPING;
+    current_state = SLEEPING;
     lcd.off();
 }
 
 void UITask::wakeup()
 {
     lcd.on();
-    mainstate = WAKEUP;
+    current_state = WAKEUP;
 }
 
 void UITask::check_sleep_timer()
@@ -61,7 +101,7 @@ void UITask::check_sleep_timer()
 void UITask::reset_sleep_timer()
 {
     last_activity = millis();
-    if (mainstate == SLEEPING)
+    if (current_state == SLEEPING)
     {
         wakeup();
     }
@@ -69,6 +109,8 @@ void UITask::reset_sleep_timer()
 
 void UITask::run(uint32_t now)
 {
+    boolean input_seen = false;
+    boolean button_clicked = false;
     if (bouncer.update())
     {
         bouncer_value = bouncer.read();
@@ -78,8 +120,8 @@ void UITask::run(uint32_t now)
         if (bouncer_value == LOW)
         {
             reset_sleep_timer();
-            // pass
-            motortimer.freeze();
+            button_clicked = true;
+            input_seen = true;
         }
         else
         {
@@ -98,31 +140,63 @@ void UITask::run(uint32_t now)
         Serial.print(F("clicks="));
         Serial.println(clicks, DEC);
         
-        global_config.global_dimmer_adjust += clicks;
-        if (global_config.global_dimmer_adjust > 255)
-        {
-            global_config.global_dimmer_adjust = 255;
-        }
-        if (global_config.global_dimmer_adjust < -255 )
-        {
-            global_config.global_dimmer_adjust = -255;
-        }
-        Serial.print(F("global_dimmer_adjust = ")); Serial.println(global_config.global_dimmer_adjust, DEC);
-        update_shiftpwm_all();
-        
+        current_menu_index += clicks;
+        input_seen = true;
+
     }
 
     check_sleep_timer();
     // The monster state machine
-    switch (mainstate)
+    switch (current_state)
     {
         case SLEEPING:
             // Do nothing, the wakeup routines will take care of everything
         break;
         case WAKEUP:
             // Discard UI interaction used to wake us up and wake up fully
-            mainstate = ROOT;
+            current_state = STATUS;
+            redraw_needed = true;
         break;
+        
+        case STATUS:
+        {
+            if (redraw_needed)
+            {
+                lcd.clear();
+                lcd.setCursor(2, 0); // cols, rows
+                lcd.print(F("Coaster Ctrl"));
+                lcd.setCursor(0, 1); // cols, rows
+                lcd.print(F("Mot "));
+                if (motortimer.is_frozen())
+                {
+                    lcd.print(F("OFF"));
+                }
+                else
+                {
+                    lcd.print(F("ON"));
+                }
+                lcd.setCursor(8, 1); // cols, rows
+                lcd.print(F("Dim "));
+                lcd.print(global_config.global_dimmer_adjust, DEC);
+                
+                redraw_needed = false;
+            }
+            if (input_seen)
+            {
+                current_state = ROOT;
+                redraw_needed = true;
+            }
+            break;
+        }
+        case ROOT:
+        {
+            if (redraw_needed)
+            {
+                lcd.clear();
+                redraw_needed = false;
+            }
+            break;
+        }
     }
 }
 
