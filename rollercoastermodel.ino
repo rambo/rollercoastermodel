@@ -50,7 +50,7 @@ int i = 0;
 void loop ()
 {
     i++;
-    lcd.setBacklight(HIGH);
+//    lcd.setBacklight(HIGH);
     lcd.clear();
     lcd.print(F("Hello World "));
     lcd.print(i, DEC);
@@ -65,6 +65,9 @@ void loop ()
     ShiftPWM.OneByOneSlow();
     */
 
-    //lcd.setBacklight(LOW);
+    /*
+    delay(100);
+    lcd.setBacklight(LOW);
+    */
     delay(100);
 }
