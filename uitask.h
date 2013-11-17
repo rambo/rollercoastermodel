@@ -13,6 +13,15 @@ enum UIState {
     LEDMENU
 };
 
+
+
+#define __PROG_TYPES_COMPAT__
+#include <avr/pgmspace.h>
+const prog_char string_back[] PROGMEM = "Back";
+const prog_char string_motor_ctrl[] PROGMEM = "Motor control";
+
+
+
 /**
  * Menu structure plan
 

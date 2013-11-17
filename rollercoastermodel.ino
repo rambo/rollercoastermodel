@@ -1,3 +1,6 @@
+#define __PROG_TYPES_COMPAT__
+#include <avr/pgmspace.h>
+
 // Note uses the *new* LiquidCrystal library https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home
 #include <Wire.h>
 #include <LCD.h>
