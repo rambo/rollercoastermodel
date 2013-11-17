@@ -1,3 +1,5 @@
+
+
 // Note uses the *new* LiquidCrystal library https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home
 #include <Wire.h>
 #include <LCD.h>
@@ -14,10 +16,53 @@ const bool ShiftPWM_balanceLoad = false;
 #define SHIFTPWM_USE_TIMER2
 #include <ShiftPWM.h>   // include ShiftPWM.h after setting the pins!
 // These are config variables ShiftPWM uses
-uint8_t maxBrightness = 255;
-uint8_t pwmFrequency = 120;
-uint8_t numRegisters = 2;
+const uint8_t maxBrightness = 255;
+const uint8_t pwmFrequency = 120;
+const  uint8_t numRegisters = 2;
 //Usable HW-PWM pins: 3,5,6,9 & 10 (11 is taken by SPI  above)
+
+
+// Use the AVR block functions directly (looping over arrays using the EEPROM Arduino library writing a byte at a time is just stupid), see also http://arduino.cc/playground/Code/EEPROMWriteAnything
+#include <avr/eeprom.h>
+typedef struct {
+    uint16_t motor_stop_wait;
+    uint16_t motor_run_wait;
+    uint8_t motor_speed;
+    uint16_t ui_idle_timeout;
+    int8_t global_dimmer_adjust;
+    uint8_t led_pwm_values[(numRegisters*8)];
+    
+    uint16_t magic_number;
+} CoasterConfig;
+CoasterConfig global_config;
+
+void config_defaults()
+{
+    global_config.magic_number    = 0xdead;
+    global_config.ui_idle_timeout = 10000;
+    global_config.motor_stop_wait = 5000;
+    global_config.motor_run_wait  = 2000;
+    global_config.motor_speed     = 180; // 71% which should be close to the ~8.6V the original 555-box did.
+    // This might not be the correct way...
+    memset(&(global_config.led_pwm_values), 255, sizeof(global_config.led_pwm_values));
+}
+
+void config_eeprom_read()
+{
+    eeprom_read_block((void*)&global_config, (void*)0, sizeof(global_config));
+    if (global_config.magic_number != 0xdead)
+    {
+        // Insane value, restore defaults
+        config_defaults();
+    }
+}
+
+void config_eeprom_write()
+{
+    cli();
+    eeprom_write_block((const void*)&global_config, (void*)0, sizeof(global_config));
+    sei();
+}
 
 
 
@@ -50,6 +95,7 @@ UITask uitask;
 void setup ( )
 {
     Serial.begin(57600);
+    config_eeprom_read();
 
     // Init LCD
     lcd.begin ( 16, 2 );
