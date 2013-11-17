@@ -9,7 +9,8 @@ enum MotorState {
     RUNNING,
     STOPPED,
     RUN_COUNTDOWN, // If I later implement the UI support for countdown display
-    STOP_COUNTDOWN
+    STOP_COUNTDOWN,
+    FROZEN
 };
 
 
@@ -20,10 +21,11 @@ class MotorTimer : public TimedTask
         // Create a new blinker for the specified pin and rate.
         MotorTimer(uint8_t _pin);
         virtual void run(uint32_t now);
+        void freeze();
+        void thaw();
+        
     private:
         uint8_t pin;      // LED pin.
-        uint16_t stop_wait_ms;
-        uint16_t run_wait_ms;
         MotorState state;
 };
 
@@ -37,7 +39,48 @@ MotorTimer::MotorTimer(uint8_t _pin)
 
 void MotorTimer::run(uint32_t now)
 {
-    incRunTime(3000);
+    switch (state)
+    {
+        case UNINITIALIZED:
+        {
+            state = STOPPED;
+            break;
+        }
+        case STOPPED:
+        {
+            incRunTime(global_config.motor_run_wait);
+            state = RUNNING;
+            analogWrite(pin, global_config.motor_speed);
+            break;
+        }
+        case RUNNING:
+        {
+            incRunTime(global_config.motor_stop_wait);
+            state = STOPPED;
+            analogWrite(pin, 0);
+            break;
+        }
+        case FROZEN:
+        {
+            // TODO: Overload the canRun method instead of using the timer
+            incRunTime(global_config.motor_stop_wait);
+        }
+    }
+}
+
+void MotorTimer::freeze()
+{
+    analogWrite(pin, 0);
+    state = FROZEN;
+}
+
+void MotorTimer::thaw()
+{
+    if (state != FROZEN)
+    {
+        return;
+    }
+    state = UNINITIALIZED;
 }
 
 

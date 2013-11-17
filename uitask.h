@@ -43,6 +43,7 @@ void UITask::run(uint32_t now)
         if (bouncer_value == LOW)
         {
             // pass
+            motortimer.freeze();
         }
         else
         {
