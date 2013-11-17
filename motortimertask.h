@@ -25,7 +25,7 @@ MotorTimer::MotorTimer(uint8_t _pin)
 void MotorTimer::run(uint32_t now)
 {
 
-    //incRunTime(rate);
+    incRunTime(3000);
 }
 
 
