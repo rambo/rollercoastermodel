@@ -3566,6 +3566,14 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 on the LCD with 22R one.
 That's why there is no resistor on
 the backlight in the schematic</text>
+<text x="-10.16" y="66.04" size="1.778" layer="97">Arduino pins:
+MOSI = A0
+CLK = A1
+SS = A2</text>
+<text x="-12.7" y="12.7" size="1.778" layer="97">Arduino pins:
+ROTA = A3
+ROTB = A4
+ROTPB = A5</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="96.52" y="48.26"/>
