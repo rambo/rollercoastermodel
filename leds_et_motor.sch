@@ -489,6 +489,82 @@
 <rectangle x1="8.509" y1="-4.699" x2="9.271" y2="-2.921" layer="51"/>
 <rectangle x1="8.509" y1="-5.461" x2="9.271" y2="-4.699" layer="21"/>
 </package>
+<package name="1X04">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="0" y1="0.635" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.905" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="1.27" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="0.635" x2="2.54" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="-0.635" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="-1.27" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="0" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-4.445" y1="1.27" x2="-3.175" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="1.27" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="0.635" x2="-2.54" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="-0.635" x2="-3.175" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="0.635" x2="-1.905" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="1.27" x2="-0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="0" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="-1.27" x2="-1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="-1.27" x2="-2.54" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="0.635" x2="-5.08" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-4.445" y1="1.27" x2="-5.08" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="-0.635" x2="-4.445" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="-1.27" x2="-4.445" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="1.27" x2="4.445" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="4.445" y1="1.27" x2="5.08" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="0.635" x2="5.08" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="-0.635" x2="4.445" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="1.27" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="-0.635" x2="3.175" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="4.445" y1="-1.27" x2="3.175" y2="-1.27" width="0.1524" layer="21"/>
+<pad name="1" x="-3.81" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="2" x="-1.27" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="3" x="1.27" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="4" x="3.81" y="0" drill="1.016" shape="long" rot="R90"/>
+<text x="-5.1562" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-5.08" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
+<rectangle x1="-4.064" y1="-0.254" x2="-3.556" y2="0.254" layer="51"/>
+<rectangle x1="3.556" y1="-0.254" x2="4.064" y2="0.254" layer="51"/>
+</package>
+<package name="1X04/90">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-5.08" y1="-1.905" x2="-2.54" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="-1.905" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="0.635" x2="-5.08" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="0.635" x2="-5.08" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="6.985" x2="-3.81" y2="1.27" width="0.762" layer="21"/>
+<wire x1="-2.54" y1="-1.905" x2="0" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="0" y1="-1.905" x2="0" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="6.985" x2="-1.27" y2="1.27" width="0.762" layer="21"/>
+<wire x1="0" y1="-1.905" x2="2.54" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="-1.905" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="0.635" x2="0" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="6.985" x2="1.27" y2="1.27" width="0.762" layer="21"/>
+<wire x1="2.54" y1="-1.905" x2="5.08" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="-1.905" x2="5.08" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="0.635" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="6.985" x2="3.81" y2="1.27" width="0.762" layer="21"/>
+<pad name="1" x="-3.81" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<pad name="2" x="-1.27" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<pad name="3" x="1.27" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<pad name="4" x="3.81" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<text x="-5.715" y="-3.81" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<text x="6.985" y="-4.445" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-4.191" y1="0.635" x2="-3.429" y2="1.143" layer="21"/>
+<rectangle x1="-1.651" y1="0.635" x2="-0.889" y2="1.143" layer="21"/>
+<rectangle x1="0.889" y1="0.635" x2="1.651" y2="1.143" layer="21"/>
+<rectangle x1="3.429" y1="0.635" x2="4.191" y2="1.143" layer="21"/>
+<rectangle x1="-4.191" y1="-2.921" x2="-3.429" y2="-1.905" layer="21"/>
+<rectangle x1="-1.651" y1="-2.921" x2="-0.889" y2="-1.905" layer="21"/>
+<rectangle x1="0.889" y1="-2.921" x2="1.651" y2="-1.905" layer="21"/>
+<rectangle x1="3.429" y1="-2.921" x2="4.191" y2="-1.905" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PINHD3">
@@ -548,6 +624,18 @@
 <pin name="14" x="5.08" y="-7.62" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
 <pin name="15" x="-2.54" y="-10.16" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="16" x="5.08" y="-10.16" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
+</symbol>
+<symbol name="PINHD4">
+<wire x1="-6.35" y1="-5.08" x2="1.27" y2="-5.08" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="-5.08" x2="1.27" y2="7.62" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="7.62" x2="-6.35" y2="7.62" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="7.62" x2="-6.35" y2="-5.08" width="0.4064" layer="94"/>
+<text x="-6.35" y="8.255" size="1.778" layer="95">&gt;NAME</text>
+<text x="-6.35" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-2.54" y="5.08" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="2" x="-2.54" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="3" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="4" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -684,6 +772,36 @@
 <connect gate="A" pin="7" pad="7"/>
 <connect gate="A" pin="8" pad="8"/>
 <connect gate="A" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PINHD-1X4" prefix="JP" uservalue="yes">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<gates>
+<gate name="A" symbol="PINHD4" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="1X04">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="2"/>
+<connect gate="A" pin="3" pad="3"/>
+<connect gate="A" pin="4" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="/90" package="1X04/90">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="2"/>
+<connect gate="A" pin="3" pad="3"/>
+<connect gate="A" pin="4" pad="4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1550,18 +1668,20 @@ ULN2803 Darlington array. 500mA max per channel, 8-channel package. Spark Fun El
 <parts>
 <part name="LED_CTRL" library="pinhead" deviceset="PINHD-1X3" device=""/>
 <part name="IC1" library="SparkFun-DigitalIC" deviceset="74*595" device="N" technology="LS"/>
-<part name="PWR" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
 <part name="IC2" library="SparkFun-DigitalIC" deviceset="74*595" device="N" technology="LS"/>
 <part name="ULN1" library="SparkFun-PowerIC" deviceset="ULN2803" device="DIP"/>
-<part name="PWR1" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" deviceset="+12V" device=""/>
 <part name="PWM_IN" library="pinhead" deviceset="PINHD-1X5" device=""/>
 <part name="JP3" library="pinhead" deviceset="PINHD-2X8" device="/90"/>
 <part name="JP1" library="pinhead" deviceset="PINHD-2X8" device="/90"/>
 <part name="JP2" library="pinhead" deviceset="PINHD-2X8" device="/90"/>
+<part name="12V_PWR_IN" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="GND3" library="supply1" deviceset="GND" device=""/>
+<part name="P+3" library="supply1" deviceset="+12V" device=""/>
+<part name="ARDUINO_PWR" library="pinhead" deviceset="PINHD-1X4" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1576,27 +1696,29 @@ MOSI = 11</text>
 <instances>
 <instance part="LED_CTRL" gate="A" x="7.62" y="66.04" rot="R180"/>
 <instance part="IC1" gate="A" x="50.8" y="43.18"/>
-<instance part="PWR" gate="G$1" x="7.62" y="40.64" rot="R180"/>
-<instance part="GND1" gate="1" x="17.78" y="35.56"/>
-<instance part="P+1" gate="1" x="17.78" y="43.18"/>
+<instance part="GND1" gate="1" x="20.32" y="38.1" rot="R90"/>
+<instance part="P+1" gate="1" x="20.32" y="40.64" rot="R270"/>
 <instance part="IC2" gate="A" x="50.8" y="2.54"/>
 <instance part="ULN1" gate="G$1" x="63.5" y="93.98"/>
-<instance part="PWR1" gate="G$1" x="7.62" y="22.86" rot="R180"/>
-<instance part="GND2" gate="1" x="17.78" y="17.78"/>
-<instance part="P+2" gate="1" x="17.78" y="25.4"/>
+<instance part="GND2" gate="1" x="20.32" y="35.56" rot="R90"/>
+<instance part="P+2" gate="1" x="20.32" y="33.02" rot="R270"/>
 <instance part="PWM_IN" gate="A" x="7.62" y="101.6" rot="R180"/>
 <instance part="JP3" gate="A" x="134.62" y="93.98"/>
 <instance part="JP1" gate="A" x="116.84" y="43.18"/>
 <instance part="JP2" gate="A" x="116.84" y="2.54"/>
+<instance part="12V_PWR_IN" gate="G$1" x="5.08" y="2.54" rot="R180"/>
+<instance part="GND3" gate="1" x="15.24" y="-2.54"/>
+<instance part="P+3" gate="1" x="15.24" y="5.08"/>
+<instance part="ARDUINO_PWR" gate="A" x="7.62" y="38.1" rot="R180"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="PWR" gate="G$1" pin="1"/>
 <wire x1="10.16" y1="38.1" x2="17.78" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
+<pinref part="ARDUINO_PWR" gate="A" pin="3"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="A" pin="G"/>
@@ -1624,9 +1746,9 @@ MOSI = 11</text>
 <label x="40.64" y="71.12" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="PWR1" gate="G$1" pin="1"/>
-<wire x1="10.16" y1="20.32" x2="17.78" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="35.56" x2="17.78" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
+<pinref part="ARDUINO_PWR" gate="A" pin="2"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="A" pin="2"/>
@@ -1682,12 +1804,17 @@ MOSI = 11</text>
 <junction x="121.92" y="10.16"/>
 <label x="121.92" y="-15.24" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="12V_PWR_IN" gate="G$1" pin="1"/>
+<wire x1="7.62" y1="0" x2="15.24" y2="0" width="0.1524" layer="91"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="+5V" class="0">
 <segment>
-<pinref part="PWR" gate="G$1" pin="2"/>
 <wire x1="10.16" y1="40.64" x2="17.78" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
+<pinref part="ARDUINO_PWR" gate="A" pin="4"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="A" pin="VCC"/>
@@ -1910,9 +2037,9 @@ MOSI = 11</text>
 </net>
 <net name="+12V" class="0">
 <segment>
-<pinref part="PWR1" gate="G$1" pin="2"/>
-<wire x1="10.16" y1="22.86" x2="17.78" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="33.02" x2="17.78" y2="33.02" width="0.1524" layer="91"/>
 <pinref part="P+2" gate="1" pin="+12V"/>
+<pinref part="ARDUINO_PWR" gate="A" pin="1"/>
 </segment>
 <segment>
 <pinref part="ULN1" gate="G$1" pin="10"/>
@@ -1932,6 +2059,11 @@ MOSI = 11</text>
 <junction x="139.7" y="88.9"/>
 <pinref part="JP3" gate="A" pin="10"/>
 <label x="139.7" y="76.2" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="12V_PWR_IN" gate="G$1" pin="2"/>
+<wire x1="7.62" y1="2.54" x2="15.24" y2="2.54" width="0.1524" layer="91"/>
+<pinref part="P+3" gate="1" pin="+12V"/>
 </segment>
 </net>
 <net name="PWM_IN5" class="0">
