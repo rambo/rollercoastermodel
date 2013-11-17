@@ -1,8 +1,7 @@
 // Note uses the *new* LiquidCrystal library https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home
 #include <Wire.h>
 #include <LCD.h>
-// TODO:switch to SR3W (and rewire accordingly)
-#include <LiquidCrystal_SR.h>
+#include <LiquidCrystal_SR3W.h>
 
 // ShiftPWM library, use my fork: https://github.com/rambo/ShiftPWM
 #include <SPI.h>
@@ -18,8 +17,8 @@ uint8_t numRegisters = 1;
 
 
 // constructor prototype parameter:
-//  LiquidCrystal_SR lcd(DataPin, ClockPin, EnablePin);
-LiquidCrystal_SR lcd(A0, A1, A2); 
+//  LiquidCrystal_SR3W lcd(DataPin, ClockPin, LatchPin, sr_enable, sr_rw, sr_rs, sr_d4, sr_d5, sr_d6, sr_d7, sr_bl, bl_pol);
+LiquidCrystal_SR3W lcd(A0, A1, A2, 0, 1, 2, 3, 4, 5, 6, 7, POSITIVE); 
 
 
 void setup ( )
@@ -51,6 +50,7 @@ int i = 0;
 void loop ()
 {
     i++;
+    lcd.setBacklight(HIGH);
     lcd.clear();
     lcd.print(F("Hello World "));
     lcd.print(i, DEC);
@@ -63,5 +63,6 @@ void loop ()
     ShiftPWM.PrintInterruptLoad();
     ShiftPWM.OneByOneSlow();
 
+    lcd.setBacklight(LOW);
     delay(100);
 }
