@@ -4,12 +4,22 @@
 #include <Arduino.h>
 #include <Task.h>
 
+enum UIState { 
+    SLEEPING,
+    ROOT,
+    MOTORMENU,
+    LEDMENU
+};
+
 class UITask : public Task
 {
-public:
-    UITask();
-    virtual void run(uint32_t now);
-    virtual bool canRun(uint32_t now);
+    public:
+        UITask();
+        virtual void run(uint32_t now);
+        virtual bool canRun(uint32_t now);
+    private:
+        UIState mainstate;
+        // Do we need to track substate ? probably...
 };
 
 UITask::UITask()
