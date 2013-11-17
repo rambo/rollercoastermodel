@@ -18,7 +18,7 @@ uint8_t numRegisters = 1;
 
 // constructor prototype parameter:
 //  LiquidCrystal_SR3W lcd(DataPin, ClockPin, LatchPin, sr_enable, sr_rw, sr_rs, sr_d4, sr_d5, sr_d6, sr_d7, sr_bl, bl_pol);
-LiquidCrystal_SR3W lcd(A0, A1, A2, 0, 1, 2, 3, 4, 5, 6, 7, POSITIVE); 
+LiquidCrystal_SR3W lcd(A0, A2, A1, 0, 1, 2, 3, 4, 5, 6, 7, POSITIVE); 
 
 
 void setup ( )
