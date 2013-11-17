@@ -15,12 +15,31 @@ enum UIState {
 
 
 
-#define __PROG_TYPES_COMPAT__
 #include <avr/pgmspace.h>
-const prog_char string_back[] PROGMEM = "Back";
-const prog_char string_motor_ctrl[] PROGMEM = "Motor control";
+#define FS(x) (__FlashStringHelper*)(x)
+
+const char string_back[] PROGMEM = "Back";
+const char string_motor_ctrl[] PROGMEM = "Motor control";
+const char string_freeze[] PROGMEM = "Freeze";
+const char string_unfreeze[] PROGMEM = "Unfreeze";
+const char string_timer[] PROGMEM = "Timer";
+const char string_ontime[] PROGMEM = "On time";
+const char string_offtime[] PROGMEM = "Off time";
+const char string_edit[] PROGMEM = "Edit";
+const char string_save[] PROGMEM = "Save settings";
+const char string_confirm[] PROGMEM = "Confirm";
+const char string_dimmer[] PROGMEM = "Dimmer control";
+const char string_leds[] PROGMEM = "LED control";
 
 
+const char* const root_menu[] PROGMEM =
+{
+    string_back,
+    string_motor_ctrl,
+    string_dimmer,
+    string_leds,
+    string_save
+};
 
 /**
  * Menu structure plan
