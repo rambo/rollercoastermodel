@@ -19,8 +19,43 @@ const uint8_t pwmFrequency = 120;
 const  uint8_t numRegisters = 2;
 //Usable HW-PWM pins: 3,5,6,9 & 10 (11 is taken by SPI  above)
 
+
+// Config must be included *after* we know how many shift registers we have for ShiftPWM
 #include <avr/eeprom.h>
 #include "config.h"
+
+// Updates shiftpwm internal state from the configration for all leds
+void update_shiftpwm_all()
+{
+    for (uint8_t i = 0; i < sizeof(global_config.led_pwm_values); i++)
+    {
+        update_shiftpwm_single(i);
+    }
+}
+
+// Updates shiftpwm internal state from the configration for given led
+void update_shiftpwm_single(uint8_t i)
+{
+    int16_t tmp;
+    tmp = global_config.led_pwm_values[i] + global_config.global_dimmer_adjust;
+    if (tmp > 255)
+    {
+        tmp = 255;
+    }
+    if (tmp < 0)
+    {
+        tmp = 0;
+    }
+    ShiftPWM.SetOne(i, tmp);
+    /*
+    Serial.print(F("SetOne("));
+    Serial.print(i, DEC);
+    Serial.print(F(", "));
+    Serial.print(tmp, DEC);
+    Serial.println(F(")"));
+    */
+}
+
 
 // http://code.google.com/p/adaencoder/ (I have older version thus still using pinchangeint and not the new oopinchangeint)
 #include <PinChangeInt.h> // necessary otherwise we get undefined reference errors.
@@ -74,19 +109,24 @@ void setup ( )
     ShiftPWM.Start(pwmFrequency,maxBrightness);
 
     // Set the PWMs as outputs
+    /**
+     * Let the tasks take care of it
     pinMode(3, OUTPUT);
     pinMode(5, OUTPUT);
     pinMode(6, OUTPUT);
     pinMode(9, OUTPUT);
     pinMode(10, OUTPUT);
+     */
 
     // Test the LEDs    
     ShiftPWM.SetAll(maxBrightness);
     delay(1000);
     ShiftPWM.SetAll(0);
     ShiftPWM.PrintInterruptLoad();
-
     
+    // And set the initial config state
+    update_shiftpwm_all();
+
 }
 
 void loop ()

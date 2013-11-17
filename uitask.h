@@ -58,6 +58,19 @@ void UITask::run(uint32_t now)
         // clicks has the movement value
         Serial.print(F("clicks="));
         Serial.println(clicks, DEC);
+        
+        global_config.global_dimmer_adjust += clicks;
+        if (global_config.global_dimmer_adjust > 255)
+        {
+            global_config.global_dimmer_adjust = 255;
+        }
+        if (global_config.global_dimmer_adjust < 0 )
+        {
+            global_config.global_dimmer_adjust = 0;
+        }
+        Serial.print(F("global_dimmer_adjust = ")); Serial.println(global_config.global_dimmer_adjust, DEC);
+        update_shiftpwm_all();
+        
     }
 }
 

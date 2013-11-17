@@ -7,10 +7,10 @@
 typedef struct {
     uint16_t motor_stop_wait;
     uint16_t motor_run_wait;
-    uint8_t motor_speed;
+    uint8_t  motor_speed;
     uint16_t ui_idle_timeout;
-    int8_t global_dimmer_adjust;
-    uint8_t led_pwm_values[(numRegisters*8)];
+    int16_t  global_dimmer_adjust; // We need to catch going below 0 without overflow (ditto for going over 255)
+    uint8_t  led_pwm_values[(numRegisters*8)];
     
     uint16_t magic_number;
 } CoasterConfig;
