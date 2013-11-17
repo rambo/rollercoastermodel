@@ -244,6 +244,7 @@ void UITask::run(uint32_t now)
                 uint8_t tmp = ARRAY_SIZE(root_menu);
                 Serial.println(tmp, DEC);
                 Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
+                Serial.print(F("current_menu_item=")); Serial.println(FS(root_menu[current_menu_index]));
 
                 lcd.clear();
                 lcd.print(FS(root_menu[current_menu_index]));
