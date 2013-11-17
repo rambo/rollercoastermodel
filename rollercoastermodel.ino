@@ -8,7 +8,7 @@ LiquidCrystal_SR3W lcd(A2, A1, A0, 6, 7, 0 , 5, 4, 3, 2, 1, POSITIVE);
 
 // ShiftPWM library, use my fork: https://github.com/rambo/ShiftPWM
 #include <SPI.h>
-const uint8_t ShiftPWM_latchPin=10;
+const uint8_t ShiftPWM_latchPin = 8;
 const bool ShiftPWM_invertOutputs = false; 
 const bool ShiftPWM_balanceLoad = false;
 #define SHIFTPWM_USE_TIMER2
@@ -17,6 +17,8 @@ const bool ShiftPWM_balanceLoad = false;
 uint8_t maxBrightness = 255;
 uint8_t pwmFrequency = 120;
 uint8_t numRegisters = 1;
+//Usable HW-PWM pins: 3,5,6,9 & 10 (11 is taken by SPI  above)
+
 
 
 // http://code.google.com/p/adaencoder/ (I have older version thus still using pinchangeint and not the new oopinchangeint)
@@ -98,19 +100,13 @@ void loop ()
         }
     }
 
-    /*
     for (uint8_t ii = 0; ii < (numRegisters*8) ; ii++)
     {
         ShiftPWM.SetOne(ii, maxBrightness);
         delay(100);
     }
     ShiftPWM.PrintInterruptLoad();
-    ShiftPWM.OneByOneSlow();
-    */
+    ShiftPWM.OneByOneFast();
 
-    /*
-    delay(100);
-    lcd.setBacklight(LOW);
-    */
     delay(100);
 }
