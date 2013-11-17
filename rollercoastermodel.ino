@@ -58,15 +58,25 @@ void setup ( )
     SPI.begin(); 
     ShiftPWM.SetAmountOfRegisters(numRegisters);
     ShiftPWM.Start(pwmFrequency,maxBrightness);
-    
+
+    // Set the PWMs as outputs
+    pinMode(3, OUTPUT);
+    pinMode(5, OUTPUT);
+    pinMode(6, OUTPUT);
+    pinMode(9, OUTPUT);
+    pinMode(10, OUTPUT);
+
+    // Test the LEDs    
     ShiftPWM.SetAll(maxBrightness);
-    ShiftPWM.PrintInterruptLoad();
     delay(1000);
     ShiftPWM.SetAll(0);
+    ShiftPWM.PrintInterruptLoad();
 
+    
 }
 
-int i = 0;
+int motor_pwm = 0; // We use the rotary to adjust this, must catch above 255 and below 0 conditions
+uint16_t i = 0;
 void loop ()
 {
     i++;
@@ -82,6 +92,18 @@ void loop ()
         // clicks has the movement value
         Serial.print(F("clicks="));
         Serial.println(clicks, DEC);
+        motor_pwm += (clicks*5);
+        if (motor_pwm < 0)
+        {
+            motor_pwm = 0;
+        }
+        if (motor_pwm > 255)
+        {
+            motor_pwm = 255;
+        }
+        analogWrite(9, motor_pwm);
+        Serial.print(F("motor_pwm="));
+        Serial.println(motor_pwm, DEC);
     }
 
     if (bouncer.update())
@@ -100,6 +122,7 @@ void loop ()
         }
     }
 
+    /*
     for (uint8_t ii = 0; ii < (numRegisters*8) ; ii++)
     {
         ShiftPWM.SetOne(ii, maxBrightness);
@@ -107,6 +130,7 @@ void loop ()
     }
     ShiftPWM.PrintInterruptLoad();
     ShiftPWM.OneByOneFast();
+    */
 
     delay(100);
 }
