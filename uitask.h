@@ -387,6 +387,7 @@ void UITask::run(uint32_t now)
                     {
                         Serial.println(F("Back from dimmer edit"));
                         current_menu_level = 1;
+                        current_menu_index = 0;
                         return;
                         break;
                     }
