@@ -38,6 +38,7 @@ const char* const root_menu[] PROGMEM =
     string_leds,
     string_save
 };
+const uint8_t root_menu_last_item = ARRAY_SIZE(root_menu)-1;
 
 /**
  * Menu structure plan
@@ -60,6 +61,7 @@ const char* const root_menu[] PROGMEM =
   - Global dimmer
     - back
     - edit
+    - all on/off  ??
   - LEDS
     - index for each
        - back
@@ -87,6 +89,7 @@ class UITask : public Task
         UIState current_state;
         UIState prevstate;
         int8_t current_menu_index;
+        uint8_t menustack[5]; // Keep track of the selected items
         // Do we need to track substate ? probably...
         uint32_t last_activity;
         boolean redraw_needed;
@@ -217,9 +220,9 @@ void UITask::run(uint32_t now)
         {
             if (current_menu_index < 0)
             {
-                current_menu_index = ARRAY_SIZE(root_menu)-1;
+                current_menu_index = root_menu_last_item;
             }
-            if (current_menu_index > ARRAY_SIZE(root_menu)-1)
+            if (current_menu_index > root_menu_last_item)
             {
                 current_menu_index = 0;
             }
@@ -232,8 +235,24 @@ void UITask::run(uint32_t now)
                 Serial.print(F("Selected menu index ")); Serial.println(current_menu_index, DEC);
                 switch(current_menu_index)
                 {
-                    case 0:
+                    case 0: // Back
                         current_state = STATUS;
+                        return;
+                    break;
+                    case 1: // Motor
+                        // Unimplemented
+                        return;
+                    break;
+                    case 2: // Dimmer
+                        // Unimplemented
+                        return;
+                    break;
+                    case 3: // LEDS
+                        // Unimplemented
+                        return;
+                    break;
+                    case 4: // Save
+                        // Unimplemented
                         return;
                     break;
                 }
@@ -247,10 +266,14 @@ void UITask::run(uint32_t now)
 
                 lcd.clear();
                 lcd.print(FSA(root_menu[current_menu_index]));
-                if (current_menu_index < (ARRAY_SIZE(root_menu)-1))
+                lcd.setCursor(0, 1); // cols, rows
+                if (current_menu_index < root_menu_last_item)
                 {
-                    lcd.setCursor(0, 1); // cols, rows
                     lcd.print(FSA(root_menu[(current_menu_index+1)]));
+                }
+                else
+                {
+                    lcd.print(FSA(root_menu[0]));
                 }
                 lcd.setCursor(0, 0); // cols, rows
                 lcd.blink();
