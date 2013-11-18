@@ -3,7 +3,7 @@ rollercoastermodel
 
 Schematics and Arduino code related to a model rollercoaster
 
-This was done to help Stadi Mallarit to raise some money by building the model
+This was done to help Stadi Mallarit to get some new tools by building the model
 to company X (I'll check later if they want their name released).
 
 I ran out of time so some features (like adjusting each LED channel via the menu)
