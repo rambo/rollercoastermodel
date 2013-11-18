@@ -1690,12 +1690,17 @@ ULN2803 Darlington array. 500mA max per channel, 8-channel package. Spark Fun El
 SS = 8
 CLK = 13
 MOSI = 11</text>
-<text x="-15.24" y="104.14" size="1.778" layer="97">Arduino pins:
-3,5,6,9,10</text>
-<text x="78.74" y="17.78" size="1.778" layer="97">TODO: mark the QA output to correct pin
-(forgot to shift the 595s by one...) </text>
+<text x="-17.78" y="83.82" size="1.778" layer="97">Arduino pins:
+3,5,6,9,10
+
+Pin 9 is currently motor control 
+and connected to PWM_IN1</text>
 <text x="25.4" y="119.38" size="1.778" layer="97">TODO: LED13-15 signals are not wired to the darlington
 right now, will maybe do it later if it's needed.</text>
+<text x="104.14" y="60.96" size="1.778" layer="97">Strictly speaking I think the even pins
+are the "top" or "inner" ones
+so if making a proper board 
+you may need to swap these</text>
 </plain>
 <instances>
 <instance part="LED_CTRL" gate="A" x="7.62" y="66.04" rot="R180"/>
@@ -1907,12 +1912,22 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="66.04" y1="50.8" x2="71.12" y2="50.8" width="0.1524" layer="91"/>
 <label x="71.12" y="50.8" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP1" gate="A" pin="15"/>
+<wire x1="114.3" y1="33.02" x2="106.68" y2="33.02" width="0.1524" layer="91"/>
+<label x="99.06" y="33.02" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED7" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="QH"/>
 <wire x1="66.04" y1="33.02" x2="71.12" y2="33.02" width="0.1524" layer="91"/>
 <label x="71.12" y="33.02" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP1" gate="A" pin="13"/>
+<wire x1="114.3" y1="35.56" x2="106.68" y2="35.56" width="0.1524" layer="91"/>
+<label x="99.06" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED6" class="0">
@@ -1921,12 +1936,22 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="66.04" y1="35.56" x2="71.12" y2="35.56" width="0.1524" layer="91"/>
 <label x="71.12" y="35.56" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP1" gate="A" pin="11"/>
+<wire x1="114.3" y1="38.1" x2="106.68" y2="38.1" width="0.1524" layer="91"/>
+<label x="99.06" y="38.1" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED1" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="QB"/>
 <wire x1="66.04" y1="48.26" x2="71.12" y2="48.26" width="0.1524" layer="91"/>
 <label x="71.12" y="48.26" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP1" gate="A" pin="1"/>
+<wire x1="114.3" y1="50.8" x2="106.68" y2="50.8" width="0.1524" layer="91"/>
+<label x="99.06" y="50.8" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED2" class="0">
@@ -1935,12 +1960,22 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="66.04" y1="45.72" x2="71.12" y2="45.72" width="0.1524" layer="91"/>
 <label x="71.12" y="45.72" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP1" gate="A" pin="3"/>
+<wire x1="114.3" y1="48.26" x2="106.68" y2="48.26" width="0.1524" layer="91"/>
+<label x="99.06" y="48.26" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED3" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="QD"/>
 <wire x1="66.04" y1="43.18" x2="71.12" y2="43.18" width="0.1524" layer="91"/>
 <label x="71.12" y="43.18" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP1" gate="A" pin="5"/>
+<wire x1="114.3" y1="45.72" x2="106.68" y2="45.72" width="0.1524" layer="91"/>
+<label x="99.06" y="45.72" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED4" class="0">
@@ -1949,12 +1984,22 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="66.04" y1="40.64" x2="71.12" y2="40.64" width="0.1524" layer="91"/>
 <label x="71.12" y="40.64" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP1" gate="A" pin="7"/>
+<wire x1="114.3" y1="43.18" x2="106.68" y2="43.18" width="0.1524" layer="91"/>
+<label x="99.06" y="43.18" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED5" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="QF"/>
 <wire x1="66.04" y1="38.1" x2="71.12" y2="38.1" width="0.1524" layer="91"/>
 <label x="71.12" y="38.1" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP1" gate="A" pin="9"/>
+<wire x1="114.3" y1="40.64" x2="106.68" y2="40.64" width="0.1524" layer="91"/>
+<label x="99.06" y="40.64" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CHAIN0" class="0">
@@ -1974,12 +2019,22 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="66.04" y1="10.16" x2="71.12" y2="10.16" width="0.1524" layer="91"/>
 <label x="71.12" y="10.16" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="15"/>
+<wire x1="114.3" y1="-7.62" x2="106.68" y2="-7.62" width="0.1524" layer="91"/>
+<label x="99.06" y="-7.62" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED9" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="QB"/>
 <wire x1="66.04" y1="7.62" x2="71.12" y2="7.62" width="0.1524" layer="91"/>
 <label x="71.12" y="7.62" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP2" gate="A" pin="1"/>
+<wire x1="114.3" y1="10.16" x2="106.68" y2="10.16" width="0.1524" layer="91"/>
+<label x="99.06" y="10.16" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED10" class="0">
@@ -1988,6 +2043,11 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="66.04" y1="5.08" x2="71.12" y2="5.08" width="0.1524" layer="91"/>
 <label x="71.12" y="5.08" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="3"/>
+<wire x1="114.3" y1="7.62" x2="106.68" y2="7.62" width="0.1524" layer="91"/>
+<label x="99.06" y="7.62" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED11" class="0">
 <segment>
@@ -1995,12 +2055,22 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="66.04" y1="2.54" x2="71.12" y2="2.54" width="0.1524" layer="91"/>
 <label x="71.12" y="2.54" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="5"/>
+<wire x1="114.3" y1="5.08" x2="106.68" y2="5.08" width="0.1524" layer="91"/>
+<label x="99.06" y="5.08" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED12" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="QE"/>
 <wire x1="66.04" y1="0" x2="71.12" y2="0" width="0.1524" layer="91"/>
 <label x="71.12" y="0" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP2" gate="A" pin="7"/>
+<wire x1="114.3" y1="2.54" x2="106.68" y2="2.54" width="0.1524" layer="91"/>
+<label x="99.06" y="2.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED13" class="0">
@@ -2014,6 +2084,11 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="50.8" y1="111.76" x2="45.72" y2="111.76" width="0.1524" layer="91"/>
 <label x="38.1" y="111.76" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="9"/>
+<wire x1="114.3" y1="0" x2="106.68" y2="0" width="0.1524" layer="91"/>
+<label x="99.06" y="0" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED14" class="0">
 <segment>
@@ -2026,6 +2101,11 @@ right now, will maybe do it later if it's needed.</text>
 <wire x1="50.8" y1="106.68" x2="45.72" y2="106.68" width="0.1524" layer="91"/>
 <label x="38.1" y="106.68" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="11"/>
+<wire x1="114.3" y1="-2.54" x2="106.68" y2="-2.54" width="0.1524" layer="91"/>
+<label x="99.06" y="-2.54" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED15" class="0">
 <segment>
@@ -2037,6 +2117,11 @@ right now, will maybe do it later if it's needed.</text>
 <pinref part="ULN1" gate="G$1" pin="3"/>
 <wire x1="50.8" y1="101.6" x2="45.72" y2="101.6" width="0.1524" layer="91"/>
 <label x="38.1" y="101.6" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP2" gate="A" pin="13"/>
+<wire x1="114.3" y1="-5.08" x2="106.68" y2="-5.08" width="0.1524" layer="91"/>
+<label x="99.06" y="-5.08" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="+12V" class="0">
@@ -2224,102 +2309,6 @@ right now, will maybe do it later if it's needed.</text>
 <pinref part="JP3" gate="A" pin="1"/>
 <wire x1="132.08" y1="101.6" x2="124.46" y2="101.6" width="0.1524" layer="91"/>
 <label x="109.22" y="101.6" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="N$30" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="1"/>
-<wire x1="114.3" y1="50.8" x2="106.68" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$31" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="3"/>
-<wire x1="114.3" y1="48.26" x2="106.68" y2="48.26" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$32" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="5"/>
-<wire x1="114.3" y1="45.72" x2="106.68" y2="45.72" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$33" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="7"/>
-<wire x1="114.3" y1="43.18" x2="106.68" y2="43.18" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$34" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="9"/>
-<wire x1="114.3" y1="40.64" x2="106.68" y2="40.64" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$35" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="11"/>
-<wire x1="114.3" y1="38.1" x2="106.68" y2="38.1" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$36" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="13"/>
-<wire x1="114.3" y1="35.56" x2="106.68" y2="35.56" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$37" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="15"/>
-<wire x1="114.3" y1="33.02" x2="106.68" y2="33.02" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$38" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="1"/>
-<wire x1="114.3" y1="10.16" x2="106.68" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$39" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="3"/>
-<wire x1="114.3" y1="7.62" x2="106.68" y2="7.62" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$40" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="5"/>
-<wire x1="114.3" y1="5.08" x2="106.68" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$41" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="7"/>
-<wire x1="114.3" y1="2.54" x2="106.68" y2="2.54" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$42" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="9"/>
-<wire x1="114.3" y1="0" x2="106.68" y2="0" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$43" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="11"/>
-<wire x1="114.3" y1="-2.54" x2="106.68" y2="-2.54" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$44" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="13"/>
-<wire x1="114.3" y1="-5.08" x2="106.68" y2="-5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$45" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="15"/>
-<wire x1="114.3" y1="-7.62" x2="106.68" y2="-7.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
