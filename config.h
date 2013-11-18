@@ -7,7 +7,7 @@
 typedef struct {
     uint16_t motor_stop_wait;
     uint16_t motor_run_wait;
-    uint8_t  motor_speed;
+    int16_t  motor_speed; // Need to catch over/underflow anyway
     uint16_t ui_idle_timeout;
     int16_t  global_dimmer_adjust; // We need we need -255 to 255 inclusive and catch going beyond those without overflows
     uint8_t  led_pwm_values[(numRegisters*8)];

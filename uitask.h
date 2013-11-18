@@ -26,6 +26,7 @@ const char string_unfreeze[] PROGMEM = "Unfreeze";
 const char string_timer[] PROGMEM = "Timer";
 const char string_ontime[] PROGMEM = "On time";
 const char string_offtime[] PROGMEM = "Off time";
+const char string_speed[] PROGMEM = "Speed";
 const char string_edit[] PROGMEM = "Edit";
 const char string_save[] PROGMEM = "Save settings";
 const char string_confirm[] PROGMEM = "Confirm";
@@ -55,6 +56,7 @@ const uint8_t dimmer_menu_last_item = ARRAY_SIZE(dimmer_menu)-1;
 const char* const motor_menu[] PROGMEM =
 {
     string_back,
+    string_speed,
     string_ontime,
     string_offtime,
     string_freeze,
@@ -479,7 +481,24 @@ void UITask::run(uint32_t now)
                     // One of the actions
                     switch (menu_selected_stack[1])
                     {
-                        case 1: // on time
+                        case 1: // speed
+                        {
+                            if (   input_seen
+                                && !button_clicked)
+                            {
+                                global_config.motor_speed += (clicks*5);
+                            }
+                            if (global_config.motor_speed > 255)
+                            {
+                                global_config.motor_speed = 255;
+                            }
+                            if (global_config.motor_speed < 0)
+                            {
+                                global_config.motor_speed = 0;
+                            }
+                            break;
+                        }
+                        case 2: // on time
                         {
                             if (   input_seen
                                 && !button_clicked)
@@ -496,7 +515,7 @@ void UITask::run(uint32_t now)
                             }
                             break;
                         }
-                        case 2: // off time
+                        case 3: // off time
                         {
                             if (   input_seen
                                 && !button_clicked)
@@ -540,16 +559,21 @@ void UITask::run(uint32_t now)
                                 return;
                             break;
                             case 1: // on time
+                                Serial.println(F("Entering speed"));
+                                current_menu_level = 2;
+                                return;
+                            break;
+                            case 2: // on time
                                 Serial.println(F("Entering on-time"));
                                 current_menu_level = 2;
                                 return;
                             break;
-                            case 2: // off time
+                            case 3: // off time
                                 Serial.println(F("Entering off-time"));
                                 current_menu_level = 2;
                                 return;
                             break;
-                            case 3: // freeze
+                            case 4: // freeze
                                 Serial.println(F("freeze!"));
                                 motortimer.freeze();
                                 // And drop directly back to status (a timed message display would be cool, no time for that now)
@@ -557,7 +581,7 @@ void UITask::run(uint32_t now)
                                 menu_state_stack[0] = STATUS;
                                 return;
                             break;
-                            case 4: // unfreeze
+                            case 5: // unfreeze
                                 Serial.println(F("unfreeze"));
                                 motortimer.thaw();
                                 // And drop directly back to status (a timed message display would be cool, no time for that now)
@@ -610,7 +634,19 @@ void UITask::run(uint32_t now)
                         // One of the actions
                         switch (menu_selected_stack[1])
                         {
-                            case 1: // on time
+                            case 1: // speed
+                            {
+                                lcd.clear();
+                                lcd.print(F("Speed (0-255)"));
+                                Serial.println(F("Speed (0-255)"));
+                                Serial.print(F("motor_speed = ")); Serial.println(global_config.motor_speed, DEC);
+                                lcd.setCursor(0, 1); // cols, rows
+                                lcd.print(global_config.motor_speed, DEC);
+                                lcd.setCursor(0, 1); // cols, rows
+                                lcd.blink();
+                                break;
+                            }
+                            case 2: // on time
                             {
                                 lcd.clear();
                                 lcd.print(F("Run time (ms)"));
@@ -622,7 +658,7 @@ void UITask::run(uint32_t now)
                                 lcd.blink();
                                 break;
                             }
-                            case 2: // off time
+                            case 3: // off time
                             {
                                 lcd.clear();
                                 lcd.print(F("Wait time (ms)"));
