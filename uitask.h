@@ -12,7 +12,8 @@ enum UIState {
     MOTORMENU,
     DIMMERMENU,
     LEDMENU,
-    SAVEMENU
+    SAVEMENU,
+    SUBMENU
 };
 
 
@@ -97,8 +98,6 @@ class UITask : public Task
         void wakeup();
     private:
         void check_sleep_timer();
-        UIState current_state;
-        UIState prevstate;
         int8_t current_menu_index;
         uint8_t menu_selected_stack[5]; // Keep track of the selected items
         UIState menu_state_stack[5]; // Keep track substates
@@ -111,7 +110,7 @@ class UITask : public Task
 UITask::UITask()
 : Task()
 {
-    current_state = STATUS;
+    menu_state_stack[0] = STATUS;
     redraw_needed = true;
 }
 
@@ -122,14 +121,14 @@ bool UITask::canRun(uint32_t now)
 
 void UITask::sleep()
 {
-    current_state = SLEEPING;
+    menu_state_stack[0] = SLEEPING;
     lcd.off();
 }
 
 void UITask::wakeup()
 {
     lcd.on();
-    current_state = WAKEUP;
+    menu_state_stack[0] = WAKEUP;
 }
 
 void UITask::check_sleep_timer()
@@ -143,7 +142,7 @@ void UITask::check_sleep_timer()
 void UITask::reset_sleep_timer()
 {
     last_activity = millis();
-    if (current_state == SLEEPING)
+    if (menu_state_stack[0] == SLEEPING)
     {
         wakeup();
     }
@@ -156,8 +155,10 @@ void UITask::run(uint32_t now)
     if (bouncer.update())
     {
         bouncer_value = bouncer.read();
+        /*
         Serial.print(F("bouncer_value=0x"));
         Serial.println(bouncer_value, HEX);
+        */
         // Switch connects to ground, pin is pulled up internally
         if (bouncer_value == LOW)
         {
@@ -177,14 +178,13 @@ void UITask::run(uint32_t now)
         Serial.print(F("clicks="));
         Serial.println(clicks, DEC);
         
-        current_menu_index += clicks;
         input_seen = true;
 
     }
 
     check_sleep_timer();
     // The monster state machine
-    switch (current_state)
+    switch (menu_state_stack[0])
     {
         case SLEEPING:
             // Do nothing, the wakeup routines will take care of everything
@@ -192,7 +192,10 @@ void UITask::run(uint32_t now)
         break;
         case WAKEUP:
             // Discard UI interaction used to wake us up and wake up fully
-            current_state = STATUS;
+            menu_state_stack[0] = STATUS;
+            menu_selected_stack[0] = 0;
+            current_menu_level = 0;
+            current_menu_index = 0;
             redraw_needed = true;
             return;
         break;
@@ -223,7 +226,10 @@ void UITask::run(uint32_t now)
             }
             if (input_seen)
             {
-                current_state = ROOT;
+                menu_state_stack[0] = ROOT;
+                menu_selected_stack[0] = 0;
+                current_menu_level = 0;
+                current_menu_index = 0;
                 redraw_needed = true;
                 return;
             }
@@ -231,6 +237,11 @@ void UITask::run(uint32_t now)
         }
         case ROOT:
         {
+            if (   input_seen
+                && !button_clicked)
+            {
+                current_menu_index += clicks;
+            }
             if (current_menu_index < 0)
             {
                 current_menu_index = root_menu_last_item;
@@ -245,12 +256,15 @@ void UITask::run(uint32_t now)
             }
             if (button_clicked)
             {
+                button_clicked = false;
                 menu_selected_stack[0] = current_menu_index;
-                Serial.print(F("Selected menu index ")); Serial.println(current_menu_index, DEC);
+                Serial.print(F("Selected root menu index ")); Serial.println(current_menu_index, DEC);
                 switch(current_menu_index)
                 {
                     case 0: // Back
-                        current_state = STATUS;
+                        Serial.println(F("Back from root"));
+                        current_menu_level = 0;
+                        menu_state_stack[0] = STATUS;
                         return;
                     break;
                     case 1: // Motor
@@ -258,8 +272,10 @@ void UITask::run(uint32_t now)
                         return;
                     break;
                     case 2: // Dimmer
+                        Serial.println(F("To dimmer from root"));
                         current_menu_index = 1;
-                        current_state = DIMMERMENU;
+                        current_menu_level = 1;
+                        menu_state_stack[0] = DIMMERMENU;
                         // Unimplemented
                         return;
                     break;
@@ -275,8 +291,8 @@ void UITask::run(uint32_t now)
             }
             if (redraw_needed)
             {
+                redraw_needed = false;
                 Serial.println(F("Root menu"));
-                Serial.print(F("ARRAY_SIZE(root_menu)=")); Serial.println(ARRAY_SIZE(root_menu), DEC);
                 Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
                 Serial.print(F("current_menu_item=")); Serial.println(FSA(root_menu[current_menu_index]));
 
@@ -294,13 +310,128 @@ void UITask::run(uint32_t now)
                 lcd.setCursor(0, 0); // cols, rows
                 lcd.blink();
                 
-                redraw_needed = false;
             }
             break;
         }
         case DIMMERMENU:
         {
-            //
+            switch (current_menu_level)
+            {
+                case 1: // Dimmer menu
+                {
+                    if (   input_seen
+                        && !button_clicked)
+                    {
+                        current_menu_index += clicks;
+                    }
+                    if (current_menu_index < 0)
+                    {
+                        current_menu_index = dimmer_menu_last_item;
+                    }
+                    if (current_menu_index > dimmer_menu_last_item)
+                    {
+                        current_menu_index = 0;
+                    }
+                    break;
+                }
+                case 2: // Edit mode
+                {
+                    if (   input_seen
+                        && !button_clicked)
+                    {
+                        global_config.global_dimmer_adjust += (clicks*5);
+                    }
+                    if (global_config.global_dimmer_adjust > 255)
+                    {
+                        global_config.global_dimmer_adjust = 255;
+                    }
+                    if (global_config.global_dimmer_adjust < -255 )
+                    {
+                        global_config.global_dimmer_adjust = -255;
+                    }
+                    update_shiftpwm_all();
+                    break;
+                }
+            }
+            if (input_seen)
+            {
+                redraw_needed = true;
+            }
+            if (button_clicked)
+            {
+                button_clicked = false;
+                switch (current_menu_level)
+                {
+                    case 1:
+                    {
+                        menu_selected_stack[1] = current_menu_index;
+                        Serial.print(F("Selected dimmer menu index ")); Serial.println(current_menu_index, DEC);
+                        switch(current_menu_index)
+                        {
+                            case 0: // Back
+                                Serial.println(F("Back from dimmer"));
+                                current_menu_level = 0;
+                                current_menu_index = menu_selected_stack[0];
+                                menu_state_stack[0] = ROOT;
+                                return;
+                            break;
+                            case 1: // edit
+                                Serial.println(F("Entering dimmer edit mode"));
+                                current_menu_level = 2;
+                                return;
+                            break;
+                        }
+                        break;
+                    }
+                    case 2:
+                    {
+                        Serial.println(F("Back from dimmer edit"));
+                        current_menu_level = 1;
+                        return;
+                        break;
+                    }
+                }
+            }
+            if (redraw_needed)
+            {
+                Serial.print(F("current_menu_level=")); Serial.println(current_menu_level, DEC);
+                redraw_needed = false;
+                switch (current_menu_level)
+                {
+                    case 1:
+                    {
+                        Serial.println(F("Dimmer menu"));
+                        Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
+                        Serial.print(F("current_menu_item=")); Serial.println(FSA(dimmer_menu[current_menu_index]));
+                        lcd.clear();
+                        lcd.print(FSA(dimmer_menu[current_menu_index]));
+                        lcd.setCursor(0, 1); // cols, rows
+                        if (current_menu_index < dimmer_menu_last_item)
+                        {
+                            lcd.print(FSA(dimmer_menu[(current_menu_index+1)]));
+                        }
+                        else
+                        {
+                            lcd.print(FSA(dimmer_menu[0]));
+                        }
+                        lcd.setCursor(0, 0); // cols, rows
+                        lcd.blink();
+                        break;
+                    }
+                    case 2:
+                    {
+                        lcd.clear();
+                        lcd.print(F("Edit dimmer"));
+                        Serial.println(F("Edit dimmer"));
+                        Serial.print(F("global_dimmer_adjust = ")); Serial.println(global_config.global_dimmer_adjust, DEC);
+                        lcd.setCursor(0, 1); // cols, rows
+                        lcd.print(global_config.global_dimmer_adjust, DEC);
+                        lcd.setCursor(0, 1); // cols, rows
+                        lcd.blink();
+                        break;
+                    }
+                }
+            }
             break;
         }
     }
