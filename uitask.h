@@ -31,7 +31,7 @@ const char string_edit[] PROGMEM = "Edit";
 const char string_save[] PROGMEM = "Save settings";
 const char string_confirm[] PROGMEM = "Confirm";
 const char string_dimmer[] PROGMEM = "Dimmer control";
-const char string_leds[] PROGMEM = "LED control";
+const char string_leds[] PROGMEM = "LED ch control";
 
 // Root menu items
 const char* const root_menu[] PROGMEM =
@@ -63,6 +63,14 @@ const char* const motor_menu[] PROGMEM =
     string_unfreeze
 };
 const uint8_t motor_menu_last_item = ARRAY_SIZE(motor_menu)-1;
+
+// Dimmer menu items
+const char* const save_menu[] PROGMEM =
+{
+    string_back,
+    string_confirm
+};
+const uint8_t save_menu_last_item = ARRAY_SIZE(save_menu)-1;
 
 
 /**
@@ -302,9 +310,9 @@ void UITask::run(uint32_t now)
                         return;
                     break;
                     case 4: // Save
-                        // Unimplemented
-                        current_menu_level = 0;
-                        menu_state_stack[0] = STATUS;
+                        Serial.println(F("To save from root"));
+                        current_menu_level = 1;
+                        menu_state_stack[0] = SAVEMENU;
                         return;
                     break;
                 }
@@ -676,6 +684,92 @@ void UITask::run(uint32_t now)
                 }
              }
             
+            break;
+        }
+        case SAVEMENU:
+        {
+            switch (current_menu_level)
+            {
+                case 1: // Save menu
+                {
+                    if (   input_seen
+                        && !button_clicked)
+                    {
+                        current_menu_index += clicks;
+                    }
+                    if (current_menu_index < 0)
+                    {
+                        current_menu_index = dimmer_menu_last_item;
+                    }
+                    if (current_menu_index > dimmer_menu_last_item)
+                    {
+                        current_menu_index = 0;
+                    }
+                    break;
+                }
+            }
+            if (input_seen)
+            {
+                redraw_needed = true;
+            }
+            if (button_clicked)
+            {
+                button_clicked = false;
+                switch (current_menu_level)
+                {
+                    case 1: // Save menu
+                    {
+                        menu_selected_stack[1] = current_menu_index;
+                        Serial.print(F("Selected motor menu index ")); Serial.println(current_menu_index, DEC);
+                        switch(current_menu_index)
+                        {
+                            case 0: // Back
+                                Serial.println(F("Back from motor"));
+                                current_menu_level = 0;
+                                current_menu_index = menu_selected_stack[0];
+                                menu_state_stack[0] = ROOT;
+                                return;
+                            break;
+                            case 1: // confirm
+                                Serial.println(F("Confirmed"));
+                                config_eeprom_write();
+                                current_menu_level = 0;
+                                current_menu_index = menu_selected_stack[0];
+                                menu_state_stack[0] = ROOT;
+                                return;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (redraw_needed)
+            {
+                Serial.print(F("current_menu_level=")); Serial.println(current_menu_level, DEC);
+                redraw_needed = false;
+                switch (current_menu_level)
+                {
+                    case 1:
+                    {
+                        Serial.println(F("Save menu"));
+                        Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
+                        Serial.print(F("current_menu_item=")); Serial.println(FSA(save_menu[current_menu_index]));
+                        lcd.clear();
+                        lcd.print(FSA(save_menu[current_menu_index]));
+                        lcd.setCursor(0, 1); // cols, rows
+                        if (current_menu_index < save_menu_last_item)
+                        {
+                            lcd.print(FSA(save_menu[(current_menu_index+1)]));
+                        }
+                        else
+                        {
+                            lcd.print(FSA(save_menu[0]));
+                        }
+                        lcd.setCursor(0, 0); // cols, rows
+                        lcd.blink();
+                        break;
+                    }
+                }
+            }
             break;
         }
     }
