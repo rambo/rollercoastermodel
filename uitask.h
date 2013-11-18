@@ -47,9 +47,20 @@ const uint8_t root_menu_last_item = ARRAY_SIZE(root_menu)-1;
 const char* const dimmer_menu[] PROGMEM =
 {
     string_back,
-    string_edit,
+    string_edit
 };
 const uint8_t dimmer_menu_last_item = ARRAY_SIZE(dimmer_menu)-1;
+
+// Dimmer menu items
+const char* const motor_menu[] PROGMEM =
+{
+    string_back,
+    string_ontime,
+    string_offtime,
+    string_freeze,
+    string_unfreeze
+};
+const uint8_t motor_menu_last_item = ARRAY_SIZE(motor_menu)-1;
 
 
 /**
@@ -268,7 +279,10 @@ void UITask::run(uint32_t now)
                         return;
                     break;
                     case 1: // Motor
-                        // Unimplemented
+                        Serial.println(F("To dimmer from motor"));
+                        current_menu_index = 1;
+                        current_menu_level = 1;
+                        menu_state_stack[0] = MOTORMENU;
                         return;
                     break;
                     case 2: // Dimmer
@@ -433,6 +447,95 @@ void UITask::run(uint32_t now)
                     }
                 }
             }
+            break;
+        }
+        case MOTORMENU:
+        {
+            switch (current_menu_level)
+            {
+                case 1: // Motor menu
+                {
+                    if (   input_seen
+                        && !button_clicked)
+                    {
+                        current_menu_index += clicks;
+                    }
+                    if (current_menu_index < 0)
+                    {
+                        current_menu_index = motor_menu_last_item;
+                    }
+                    if (current_menu_index > motor_menu_last_item)
+                    {
+                        current_menu_index = 0;
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    // One of the actions
+                    break;
+                }
+            }
+            if (input_seen)
+            {
+                redraw_needed = true;
+            }
+            if (button_clicked)
+            {
+                button_clicked = false;
+                switch (current_menu_level)
+                {
+                    case 1: // Motor menu
+                    {
+                        menu_selected_stack[1] = current_menu_index;
+                        Serial.print(F("Selected motor menu index ")); Serial.println(current_menu_index, DEC);
+                        switch(current_menu_index)
+                        {
+                            case 0: // Back
+                                Serial.println(F("Back from motor"));
+                                current_menu_level = 0;
+                                current_menu_index = menu_selected_stack[0];
+                                menu_state_stack[0] = ROOT;
+                                return;
+                            break;
+                        }
+                        break;
+                    }
+                    case 2: // One of the submenus
+                    {
+                        break;
+                    }
+                }
+            }
+            if (redraw_needed)
+            {
+                Serial.print(F("current_menu_level=")); Serial.println(current_menu_level, DEC);
+                redraw_needed = false;
+                switch (current_menu_level)
+                {
+                    case 1:
+                    {
+                        Serial.println(F("Motor menu"));
+                        Serial.print(F("current_menu_index=")); Serial.println(current_menu_index, DEC);
+                        Serial.print(F("current_menu_item=")); Serial.println(FSA(motor_menu[current_menu_index]));
+                        lcd.clear();
+                        lcd.print(FSA(motor_menu[current_menu_index]));
+                        lcd.setCursor(0, 1); // cols, rows
+                        if (current_menu_index < motor_menu_last_item)
+                        {
+                            lcd.print(FSA(motor_menu[(current_menu_index+1)]));
+                        }
+                        else
+                        {
+                            lcd.print(FSA(motor_menu[0]));
+                        }
+                        lcd.setCursor(0, 0); // cols, rows
+                        lcd.blink();
+                        break;
+                    }
+                }
+             }
+            
             break;
         }
     }
