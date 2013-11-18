@@ -10,7 +10,9 @@ enum UIState {
     STATUS,
     ROOT,
     MOTORMENU,
-    LEDMENU
+    DIMMERMENU,
+    LEDMENU,
+    SAVEMENU
 };
 
 
@@ -39,6 +41,15 @@ const char* const root_menu[] PROGMEM =
     string_save
 };
 const uint8_t root_menu_last_item = ARRAY_SIZE(root_menu)-1;
+
+// Dimmer menu items
+const char* const dimmer_menu[] PROGMEM =
+{
+    string_back,
+    string_edit,
+};
+const uint8_t dimmer_menu_last_item = ARRAY_SIZE(dimmer_menu)-1;
+
 
 /**
  * Menu structure plan
@@ -89,7 +100,9 @@ class UITask : public Task
         UIState current_state;
         UIState prevstate;
         int8_t current_menu_index;
-        uint8_t menustack[5]; // Keep track of the selected items
+        uint8_t menu_selected_stack[5]; // Keep track of the selected items
+        UIState menu_state_stack[5]; // Keep track substates
+        uint8_t current_menu_level;
         // Do we need to track substate ? probably...
         uint32_t last_activity;
         boolean redraw_needed;
@@ -232,6 +245,7 @@ void UITask::run(uint32_t now)
             }
             if (button_clicked)
             {
+                menu_selected_stack[0] = current_menu_index;
                 Serial.print(F("Selected menu index ")); Serial.println(current_menu_index, DEC);
                 switch(current_menu_index)
                 {
@@ -244,6 +258,8 @@ void UITask::run(uint32_t now)
                         return;
                     break;
                     case 2: // Dimmer
+                        current_menu_index = 1;
+                        current_state = DIMMERMENU;
                         // Unimplemented
                         return;
                     break;
@@ -280,6 +296,11 @@ void UITask::run(uint32_t now)
                 
                 redraw_needed = false;
             }
+            break;
+        }
+        case DIMMERMENU:
+        {
+            //
             break;
         }
     }
