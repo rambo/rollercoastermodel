@@ -194,7 +194,7 @@ void UITask::run(uint32_t now)
     }
 
     check_sleep_timer();
-    // The monster state machine
+    // The monster state machine (there probably would be a more elegant library for handling this but I do not have the time to learn one right now)
     switch (menu_state_stack[0])
     {
         case SLEEPING:
@@ -295,10 +295,14 @@ void UITask::run(uint32_t now)
                     break;
                     case 3: // LEDS
                         // Unimplemented
+                        current_menu_level = 0;
+                        menu_state_stack[0] = STATUS;
                         return;
                     break;
                     case 4: // Save
                         // Unimplemented
+                        current_menu_level = 0;
+                        menu_state_stack[0] = STATUS;
                         return;
                     break;
                 }
@@ -473,6 +477,43 @@ void UITask::run(uint32_t now)
                 case 2:
                 {
                     // One of the actions
+                    switch (menu_selected_stack[1])
+                    {
+                        case 1: // on time
+                        {
+                            if (   input_seen
+                                && !button_clicked)
+                            {
+                                global_config.motor_run_wait += (clicks*50);
+                            }
+                            if (global_config.motor_run_wait > 60000)
+                            {
+                                global_config.motor_run_wait = 60000;
+                            }
+                            if (global_config.motor_run_wait < 100 )
+                            {
+                                global_config.motor_run_wait = 100;
+                            }
+                            break;
+                        }
+                        case 2: // off time
+                        {
+                            if (   input_seen
+                                && !button_clicked)
+                            {
+                                global_config.motor_stop_wait += (clicks*50);
+                            }
+                            if (global_config.motor_stop_wait > 60000)
+                            {
+                                global_config.motor_stop_wait = 60000;
+                            }
+                            if (global_config.motor_stop_wait < 100 )
+                            {
+                                global_config.motor_stop_wait = 100;
+                            }
+                            break;
+                        }
+                    }
                     break;
                 }
             }
@@ -498,11 +539,42 @@ void UITask::run(uint32_t now)
                                 menu_state_stack[0] = ROOT;
                                 return;
                             break;
+                            case 1: // on time
+                                Serial.println(F("Entering on-time"));
+                                current_menu_level = 2;
+                                return;
+                            break;
+                            case 2: // off time
+                                Serial.println(F("Entering off-time"));
+                                current_menu_level = 2;
+                                return;
+                            break;
+                            case 3: // freeze
+                                Serial.println(F("freeze!"));
+                                motortimer.freeze();
+                                // And drop directly back to status (a timed message display would be cool, no time for that now)
+                                current_menu_level = 0;
+                                menu_state_stack[0] = STATUS;
+                                return;
+                            break;
+                            case 4: // unfreeze
+                                Serial.println(F("unfreeze"));
+                                motortimer.thaw();
+                                // And drop directly back to status (a timed message display would be cool, no time for that now)
+                                current_menu_level = 0;
+                                menu_state_stack[0] = STATUS;
+                                return;
+                            break;
                         }
                         break;
                     }
                     case 2: // One of the submenus
                     {
+                        // Just drop back
+                        Serial.println(F("Dropping one level back"));
+                        dump_config();
+                        current_menu_level = 1;
+                        return;
                         break;
                     }
                 }
@@ -531,6 +603,38 @@ void UITask::run(uint32_t now)
                         }
                         lcd.setCursor(0, 0); // cols, rows
                         lcd.blink();
+                        break;
+                    }
+                    case 2:
+                    {
+                        // One of the actions
+                        switch (menu_selected_stack[1])
+                        {
+                            case 1: // on time
+                            {
+                                lcd.clear();
+                                lcd.print(F("Run time (ms)"));
+                                Serial.println(F("Run time (ms)"));
+                                Serial.print(F("motor_run_wait = ")); Serial.println(global_config.motor_run_wait, DEC);
+                                lcd.setCursor(0, 1); // cols, rows
+                                lcd.print(global_config.motor_run_wait, DEC);
+                                lcd.setCursor(0, 1); // cols, rows
+                                lcd.blink();
+                                break;
+                            }
+                            case 2: // off time
+                            {
+                                lcd.clear();
+                                lcd.print(F("Wait time (ms)"));
+                                Serial.println(F("Wait time (ms)"));
+                                Serial.print(F("motor_stop_wait = ")); Serial.println(global_config.motor_stop_wait, DEC);
+                                lcd.setCursor(0, 1); // cols, rows
+                                lcd.print(global_config.motor_stop_wait, DEC);
+                                lcd.setCursor(0, 1); // cols, rows
+                                lcd.blink();
+                                break;
+                            }
+                        }
                         break;
                     }
                 }
