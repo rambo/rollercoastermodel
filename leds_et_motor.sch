@@ -1701,6 +1701,15 @@ right now, will maybe do it later if it's needed.</text>
 are the "top" or "inner" ones
 so if making a proper board 
 you may need to swap these</text>
+<text x="-20.32" y="35.56" size="1.778" layer="97">12V goes to Vin
+GNDs to GNDs
+5V to 5V</text>
+<text x="-30.48" y="5.08" size="1.778" layer="97">Main 12V input
+There is switch on the +12V
+on the incoming line</text>
+<text x="33.02" y="-25.4" size="1.778" layer="97">Bypass caps not drawn
+(also actually forgot to add them to
+the veroboard, it works anyway)</text>
 </plain>
 <instances>
 <instance part="LED_CTRL" gate="A" x="7.62" y="66.04" rot="R180"/>

@@ -3574,6 +3574,9 @@ MOSI = A2</text>
 ROTA = A3
 ROTB = A5
 ROTPB = A4</text>
+<text x="25.4" y="12.7" size="1.778" layer="97">There's a 2.2uF cap on the power input
+not drawn here, no separate bypass cap
+for the 595 (you should add one)</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="114.3" y="48.26"/>
